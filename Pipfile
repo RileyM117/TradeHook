@@ -24,6 +24,7 @@ gunicorn = "*"
 docker = "*"
 alpaca-trade-api = "*"
 pyjwt = "*"
+dj-database-url = "*"
 
 [dev-packages]
 autopep8 = "*"
