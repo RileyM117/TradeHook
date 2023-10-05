@@ -25,6 +25,7 @@ docker = "*"
 alpaca-trade-api = "*"
 pyjwt = "*"
 dj-database-url = "*"
+django-silk = "*"
 
 [dev-packages]
 autopep8 = "*"
