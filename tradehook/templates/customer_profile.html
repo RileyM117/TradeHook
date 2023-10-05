@@ -1,0 +1,30 @@
+{% load static %}
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'tradehook/styles.css' %}">
+    <title>Customer Details</title>
+</head>
+<body>
+    <a href="http://127.0.0.1:8000/tradehook/home/" class="home-button">Home</a>
+    <h1 class="page-header">Customer Details</h1>
+    
+    {% if customer %}
+        <p><strong class="form-label">First Name:</strong> <span class="customer-info">{{ customer.first_name }}</span></p>
+        <p><strong class="form-label">Last Name:</strong> <span class="customer-info">{{ customer.last_name }}</span></p>
+    {% else %}
+        <p class="error-message">No customer details available.</p>
+    {% endif %}
+
+    <h2>Edit Customer Details</h2>
+    <form method="POST" action="{% url 'customer-me' %}">
+        {% csrf_token %}
+        <label for="first_name" class="form-label">First Name:</label>
+        <input type="text" name="first_name" id="first_name" value="{{ customer.first_name }}" class="form-input"><br>
+
+        <label for="last_name" class="form-label">Last Name:</label>
+        <input type="text" name="last_name" id="last_name" value="{{ customer.last_name }}" class="form-input"><br>
+
+        <button type="submit" class="form-button">Save</button>
+    </form>
+</body>
+</html>

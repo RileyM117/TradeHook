@@ -1,0 +1,15 @@
+{% load static %}
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'tradehook/register.css' %}">
+</head>
+<body>
+    <h2>Register</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>

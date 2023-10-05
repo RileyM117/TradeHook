@@ -1,0 +1,107 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broker List</title>
+    <link rel="stylesheet" href="{% static 'tradehook/brokers_list.css' %}">
+</head>
+<body>
+    <!-- Home Button (Separate from the container) -->
+    <a href="http://127.0.0.1:8000/tradehook/home/" class="home-button">Home</a>
+
+    <div class="container">
+        <h1>Broker List and API Guide</h1>
+        <ul>
+         <!----   {% for broker in brokers %} -->
+                <li>
+                  <!----  {{ broker.broker_name }} - {{ broker.description }} -->
+                  Alpaca
+                    <a href="http://127.0.0.1:8000/tradehook/manage/my_api_keys/" class="add-button">ADD</a><br>
+                    <br>
+                    Alpaca order_types:<br><br>
+                    stocks: 'simple_order','limit_order','stop_loss_order', 
+                    'bracket_order','trailing_stop_order','stop_price_order'<br><br>
+                    crypto: 'simple_order', 'limit_order', 'stop_price_order'<br><br>
+                    order_type examples:<br><br>
+
+                          simple_order: <br><br>
+                          Json: <br>
+                                {"ticker": "LTCUSD","qty":1,
+                    "side": "buy", "type": "market",
+                    "time_in_force":"gtc",
+                    "order_type":             "simple_order",
+                   "tradehook_api_key":"2b008cad19d54b0b8a6331a947a974b9",
+                    "broker_name":             "Alpaca"}<br><br>
+                          TradingView webhook:<br>
+                                alert('{"ticker": "' + syminfo.ticker + '", "qty": "1", "side": "buy", "time_in_force": "gtc","broker_name":             "Alpaca", "order_type": "simple_order" "tradehook_api_key":             "2b008cad19d54b0b8a6331a947a974b9"}',freq=alert.freq_once_per_bar_close)
+                    <br><br>
+
+                          limit_order: <br><br>
+                          Json: <br>
+                                {"ticker": "LTCUSD","qty":1,
+                    "side": "buy", "type": "limit",
+                    "time_in_force":"gtc", "limit_price": 1,
+                                "order_type": "limit_order",
+                    "tradehook_api_key":"2b008cad19d54b0b8a6331a947a974b9",
+                                "broker_name": "Alpaca"}<br><br>
+                          TradingView webhook:<br>
+                                alert('{"ticker": "' + syminfo.ticker + '", "qty": "1", "side": "buy", "time_in_force": "gtc", "limit_price": ' +             str.tostring(limit_price) + ',"broker_name": "Alpaca", "order_type": "simple_order",             "tradehook_api_key":             "2b008cad19d54b0b8a6331a947a974b9"}',freq=alert.freq_once_per_bar_close)
+                    <br><br>
+
+                          stop_loss_order: <br><br>
+                          Json: <br>
+                                {"ticker": "LTCUSD","qty":1,
+                    "side": "buy", "type": "limit",
+                    "time_in_force":"gtc", "stop_loss": 1,
+                                "order_type": "stop_loss_order",
+                    "tradehook_api_key":"2b008cad19d54b0b8a6331a947a974b9",
+                                "broker_name": "Alpaca"}<br><br>
+                          TradingView webhook:<br>
+                                alert('{"ticker": "' + syminfo.ticker + '", "qty": "1", "side": "buy", "time_in_force": "gtc", "stop_loss": ' +             str.tostring(stop_loss_price) + ',"broker_name": "Alpaca", "order_type": "stop_loss_order",             "tradehook_api_key":             "2b008cad19d54b0b8a6331a947a974b9"}',freq=alert.freq_once_per_bar_close)
+                    <br><br>
+
+                          bracket_order: <br><br>
+                          Json: <br>
+                                {"ticker": "LTCUSD","qty":1,
+                    "side": "buy", "type": "market",
+                    "time_in_force":"gtc",             "bracket_stop_loss": 1,
+                    "bracket_limit_price": 0.95, "bracket_take_profit": 2
+                    "order_type":             "bracket_order",
+                    "tradehook_api_key":"2b008cad19d54b0b8a6331a947a974b9",
+                                "broker_name": "Alpaca"}<br><br>
+                          TradingView webhook:<br>
+                                alert('{"ticker": "' + syminfo.ticker + '", "qty": "1", "side": "buy", "time_in_force": "gtc",             "bracket_stop_loss": ' + str.tostring(bracket_stop_loss) + ',"bracket_limit_price": ' +             str.tostring(bracket_limit_price) + ',"bracket_take_profit": ' + str.tostring(bracket_take_profit)             + ',"broker_name": "Alpaca", "order_type": "bracket_order","tradehook_api_key":             "2b008cad19d54b0b8a6331a947a974b9"}',freq=alert.freq_once_per_bar_close)
+                    <br><br>
+
+                          trailing_stop_order: <br><br>
+                          Json: <br>
+                                {"ticker": "LTCUSD","qty":1,
+                    "side": "buy", "type": "trailing_stop",
+                    "time_in_force":"gtc", "trail_price":             1,
+                    "order_type": "trailing_stop_order",
+                                "tradehook_api_key":"2b008cad19d54b0b8a6331a947a974b9",
+                    "broker_name": "Alpaca"}<br><br>
+                          TradingView webhook:<br>
+                                alert('{"ticker": "' + syminfo.ticker + '", "qty": "1", "side": "buy", "time_in_force": "gtc", "trail_price": ' +             str.tostring(trail_price) + ',"broker_name": "Alpaca", "order_type": "trailing_stop_order",             "tradehook_api_key":             "2b008cad19d54b0b8a6331a947a974b9"}',freq=alert.freq_once_per_bar_close)
+                    <br><br>
+
+                          stop_price_order: <br><br>
+                          Json: <br>
+                                {"ticker": "LTCUSD","qty":1,
+                    "side": "buy", "type": "stop_limit",
+                    "time_in_force":"gtc", "stop_price":             1,
+                    "limit_price": 1,
+                    "order_type": "stop_price_order",
+                                "tradehook_api_key":"2b008cad19d54b0b8a6331a947a974b9",
+                    "broker_name": "Alpaca"}<br><br>
+                          TradingView webhook:<br>
+                                alert('{"ticker": "' + syminfo.ticker + '", "qty": "1", "side": "buy", "time_in_force": "gtc", "stop_price": ' +             str.tostring(stop_price) + ', "limit_price": ' + str.tostring(limit_price) + ' ,"broker_name": "Alpaca",              "order_type": "trailing_stop_order", "tradehook_api_key":             "2b008cad19d54b0b8a6331a947a974b9"}',freq=alert.freq_once_per_bar_close)
+                    <br><br>
+
+                </li>
+         <!----   {% endfor %}  -->
+        </ul>
+    </div>
+</body>
+</html>

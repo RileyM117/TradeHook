@@ -1,0 +1,74 @@
+/* Reset some default browser styles */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color and font for the entire page */
+body {
+    background-color: #f7f7f7;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Style the page title */
+.title-class {
+    text-align: center;
+    font-size: 48px;
+    color: #333;
+    margin-top: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Style the heading container */
+.heading-container {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Style the navigation links */
+.heading-container h1 {
+    display: inline-block;
+    margin: 0 20px;
+    font-size: 24px;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.heading-container h1:hover {
+    color: #0056b3;
+}
+
+/* Style the welcome message and paragraph */
+.welcome-class {
+    text-align: center;
+    font-size: 36px;
+    margin-top: 40px;
+    color: #444;
+}
+
+.paragraph-class {
+    font-size: 20px;
+    color: #666;
+    margin: 30px auto;
+    max-width: 800px;
+    line-height: 1.5;
+}
+
+/* Add a subtle shadow to the heading container */
+.heading-container {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Add some padding to the page content */
+body > div {
+    padding: 20px;
+}
+
+
+
+

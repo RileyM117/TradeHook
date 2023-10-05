@@ -1,0 +1,38 @@
+{% load static %}
+<a href="http://127.0.0.1:8000/tradehook/home/" class="home-button">Home</a>
+<link rel="stylesheet" type="text/css" href="{% static 'tradehook/api_keys.css' %}">
+
+<form method="POST" action="{% url 'my_api_keys' %}">
+    {% csrf_token %}
+    <button type="submit" name="action" value="generate">Generate API Key</button>
+    <button type="submit" name="action" value="delete">Delete API Key</button>
+</form>
+
+{% if api_key %}
+    <p>API Key: {{ api_key.tradehook_api_key }}</p>
+{% endif %}
+
+<h2>Your Brokers</h2>
+<ul>
+    {% for broker in user_brokers %}
+        <li>
+            <strong>{{ broker.broker_name }}</strong><br>
+            API Key: {{ broker.broker_api_key }}<br>
+            Secret Key: {{ broker.broker_secret_key }}<br>
+            <form method="POST" action="{% url 'my_api_keys' %}">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="delete_broker">
+                <input type="hidden" name="broker_id" value="{{ broker.id }}">
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    {% endfor %}
+</ul>
+
+<h2>Add a New Broker</h2>
+<form method="POST" action="{% url 'my_api_keys' %}">
+    {% csrf_token %}
+    <input type="hidden" name="action" value="add_broker">
+    {{ broker_form.as_p }}
+    <button type="submit">Add Broker</button>
+</form>
