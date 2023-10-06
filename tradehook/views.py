@@ -207,13 +207,15 @@ class APIKeyView(View):
             api_key, created = APIKeys.objects.get_or_create(user=user)
             if not created:
                 return JsonResponse({'error': 'API key already exists.'}, status=400)
-            return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+            #return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+            return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
 
         elif request.POST.get('action') == 'delete':
             try:
                 api_key = APIKeys.objects.get(user=user)
                 api_key.delete()
-                return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+                #return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+                return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
             except APIKeys.DoesNotExist:
                 return JsonResponse({'error': 'API key not found.'}, status=404)
 
@@ -225,9 +227,11 @@ class APIKeyView(View):
                     broker = broker_form.save(commit=False)
                     broker.user = user
                     broker.save()
-                    return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+                    #return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+                    return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
             except:
-                return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+                #return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+                return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
           
             
         elif request.POST.get('action') == 'delete_broker':
@@ -235,7 +239,8 @@ class APIKeyView(View):
             try:
                 broker = CustomerBrokers.objects.get(id=broker_id, user=user)
                 broker.delete()
-                return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+                #return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+                return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
             except CustomerBrokers.DoesNotExist:
                 return JsonResponse({'error': 'Broker not found.'}, status=404)
 

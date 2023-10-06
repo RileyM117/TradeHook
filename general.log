@@ -12387,3 +12387,17 @@ AssertionError: .accepted_renderer not set on Response
 2023-10-06 05:14:33,510 (INFO) - django.utils.autoreload - /mnt/c/Users/riley/trader/global_config/settings/common.py changed, reloading.
 2023-10-06 05:14:34,557 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
 2023-10-06 05:18:27,814 (WARNING) - django.request - Not Found: /tradehook/login/
+2023-10-06 05:59:40,088 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2023-10-06 05:59:45,620 (WARNING) - django.request - Not Found: /autotrading/webhook/
+2023-10-06 05:59:55,537 (WARNING) - django.request - Bad Request: /tradehook/webhook/
+2023-10-06 06:00:06,852 (ERROR) - django.request - Internal Server Error: /tradehook/webhook/
+Traceback (most recent call last):
+  File "/home/riguy117/.local/share/virtualenvs/trader-gT8Wwzyh/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/riguy117/.local/share/virtualenvs/trader-gT8Wwzyh/lib/python3.10/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/home/riguy117/.local/share/virtualenvs/trader-gT8Wwzyh/lib/python3.10/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+  File "/home/riguy117/.local/share/virtualenvs/trader-gT8Wwzyh/lib/python3.10/site-packages/rest_framework/response.py", line 55, in rendered_content
+    assert renderer, ".accepted_renderer not set on Response"
+AssertionError: .accepted_renderer not set on Response
