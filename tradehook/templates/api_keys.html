@@ -19,7 +19,7 @@
             <strong>{{ broker.broker_name }}</strong><br>
             API Key: {{ broker.broker_api_key }}<br>
             Secret Key: {{ broker.broker_secret_key }}<br>
-            <form method="POST" action="{% url 'my_api_keys' %}">
+            <form method="POST" action="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/">
                 {% csrf_token %}
                 <input type="hidden" name="action" value="delete_broker">
                 <input type="hidden" name="broker_id" value="{{ broker.id }}">
@@ -30,7 +30,7 @@
 </ul>
 
 <h2>Add a New Broker</h2>
-<form method="POST" action="{% url 'my_api_keys' %}">
+<form method="POST" action="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/">
     {% csrf_token %}
     <input type="hidden" name="action" value="add_broker">
     {{ broker_form.as_p }}
