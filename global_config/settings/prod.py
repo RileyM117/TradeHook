@@ -35,3 +35,7 @@ DATABASES = {
 #EMAIL_HOST_USER = os.environ['MAILGUN_SMTP_LOGIN']
 #EMAIL_HOST_PASSWORD = os.environ['MAILGUN_SMTP_PASSWORD']
 #EMAIL_PORT = os.environ['MAILGUN_SMTP_PORT']
+
+LOGIN_REDIRECT_URL = 'https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/home'
+LOGOUT_REDIRECT_URL = 'https://tradehook-prod-fbb7997de66a.herokuapp.com/'
+LOGIN_URL = 'https://tradehook-prod-fbb7997de66a.herokuapp.com/'

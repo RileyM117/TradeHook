@@ -217,10 +217,6 @@ LOGGING = {
     }
 }
 
-LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/tradehook/home/'
-LOGOUT_REDIRECT_URL = 'http://127.0.0.1:8000/tradehook/login/'
-LOGIN_URL = 'http://127.0.0.1:8000/tradehook/login/'
-
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 

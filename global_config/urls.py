@@ -25,6 +25,7 @@ urlpatterns = [
     path("__debug__/", include("debug_toolbar.urls")),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.jwt')),
+    path('', LoginView.as_view(), name='login'),
     path("accounts/", include("django.contrib.auth.urls")),
     path('tradehook/', include('tradehook.urls')),
 ]

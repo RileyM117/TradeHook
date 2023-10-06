@@ -12371,3 +12371,19 @@ Traceback (most recent call last):
     assert renderer, ".accepted_renderer not set on Response"
 AssertionError: .accepted_renderer not set on Response
 2023-10-05 20:54:13,618 (WARNING) - django.request - Not Found: /
+2023-10-06 05:10:39,621 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2023-10-06 05:10:43,568 (WARNING) - django.request - Not Found: /
+2023-10-06 05:10:43,795 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-06 05:11:06,188 (INFO) - django.utils.autoreload - /mnt/c/Users/riley/trader/global_config/urls.py changed, reloading.
+2023-10-06 05:11:07,130 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2023-10-06 05:11:17,034 (INFO) - django.utils.autoreload - /mnt/c/Users/riley/trader/tradehook/urls.py changed, reloading.
+2023-10-06 05:11:17,867 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2023-10-06 05:11:36,017 (INFO) - django.utils.autoreload - /mnt/c/Users/riley/trader/global_config/urls.py changed, reloading.
+2023-10-06 05:11:36,998 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2023-10-06 05:11:47,838 (INFO) - django.utils.autoreload - /mnt/c/Users/riley/trader/global_config/urls.py changed, reloading.
+2023-10-06 05:11:48,889 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2023-10-06 05:14:24,848 (INFO) - django.utils.autoreload - /mnt/c/Users/riley/trader/global_config/settings/dev.py changed, reloading.
+2023-10-06 05:14:25,948 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2023-10-06 05:14:33,510 (INFO) - django.utils.autoreload - /mnt/c/Users/riley/trader/global_config/settings/common.py changed, reloading.
+2023-10-06 05:14:34,557 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2023-10-06 05:18:27,814 (WARNING) - django.request - Not Found: /tradehook/login/

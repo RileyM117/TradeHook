@@ -41,7 +41,7 @@ urlpatterns = [path('webhook/', views.webhook_receiver, name='webhook_receiver')
                path('view/event_logs/', views.EventLogView.as_view(), name='event_log'),
 
                path('register/', views.register, name='register'),
-               path('login/', LoginView.as_view(), name='login'),
+               #path('login/', LoginView.as_view(), name='login'),
                path('logout/', LogoutView.as_view(), name='logout'),
 ]
 urlpatterns += router.urls + api_keys_router.urls + event_logs_router.urls + brokers_router.urls + customer_brokers_router.urls + users_router.urls 
