@@ -10,7 +10,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 if DEBUG:
     MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
 
-ALLOWED_HOSTS = ['tradehook-prod-a677d6c117c0.herokuapp.com']
+ALLOWED_HOSTS = ['tradehook-prod-fbb7997de66a.herokuapp.com']
 
 DATABASES = {
     'default': dj_database_url.config()
