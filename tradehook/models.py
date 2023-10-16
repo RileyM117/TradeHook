@@ -6,6 +6,7 @@ from django.core.validators import MinValueValidator, FileExtensionValidator
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from uuid import uuid4
+from django.utils import timezone   
 # MAKE USER MODEL HERE GET RID OF USER APP ITS PRETTY USELESS
 #api_key = 'PK7N6TD62B2SRYC1YJJ6'
 #secret_key = '3AWPZhEjvFSJJMKhB7qMQ1jSMirwdLtGL2VAOMpB'
@@ -57,11 +58,13 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 class CustomerBrokers(models.Model):
     ALPACA = 'Alpaca'
+    ALPACA_PAPER = 'Alpaca - Paper'
     #OANDA = 'Oanda'
     #TRADESTATION = 'Tradestation'
 
     MEMBERSHIP_CHOICES = [
         (ALPACA, 'Alpaca'),
+        (ALPACA_PAPER, 'Alpaca - Paper'),
         #(OANDA, 'Oanda'),
         #(TRADESTATION, 'Tradestation'),
     ]
@@ -84,7 +87,7 @@ class APIKeys(models.Model):
 class EventLog(models.Model):
 
     user = models.ForeignKey(User,on_delete=models.CASCADE)
-    received_at = models.DateTimeField(auto_now_add=True)
+    received_at = models.DateTimeField(default=timezone.now)
     webhook_data = models.JSONField()
     broker_response = models.JSONField()
 

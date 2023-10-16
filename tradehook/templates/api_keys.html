@@ -1,19 +1,38 @@
 {% load static %}
-<a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/home/" class="home-button">Home</a>
+<a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/account/" class="home-button">Account</a>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap">
 <link rel="stylesheet" type="text/css" href="{% static 'tradehook/api_keys.css' %}">
 
-<form method="POST" action="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/">
-    {% csrf_token %}
-    <button type="submit" name="action" value="generate">Generate API Key</button>
-    <button type="submit" name="action" value="delete">Delete API Key</button>
-</form>
+<img class = "logo" src="{% static 'tradehook/FullLogo_Transparent.png' %}" alt="TradeHook Logo">
 
-{% if api_key %}
-    <p>API Key: {{ api_key.tradehook_api_key }}</p>
-{% endif %}
+<div class="heading-container">
+        
+    <<h1><a class="profilelink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/me/">Profile</a></h1>
+    <h1><a class="apilink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/">My API Keys</a></h1>
+    <h1><a class="setuplink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/account/">Account</a></h1>
+    <h1><a class="eventloglink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/view/event_logs/">Event Logs</a></h1>
+    <h1><a class="logoutlink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/logout/">Logout</a></h1>
+
+
+</div>
+
+<div class="whole">
+
+    {% if api_key %}
+        <p class="apikey">TradeHook API Key: {{ api_key.tradehook_api_key }}</p>
+    {% endif %}
+
+
+    <form method="POST" action="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/">
+        {% csrf_token %}
+        <button  class="generate" type="submit" name="action" value="generate">Generate API Key</button>
+        <button class= "delete" type="submit" name="action" value="delete">Delete API Key</button>
+    </form>
+
 
 <h2>Your Brokers</h2>
 <ul>
+    <span>
     {% for broker in user_brokers %}
         <li>
             <strong>{{ broker.broker_name }}</strong><br>
@@ -28,11 +47,14 @@
         </li>
     {% endfor %}
 </ul>
+    
+        <h2 class="broker">Add a New Broker</h2>
+        <form method="POST" action="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/">
+            {% csrf_token %}
+            <input type="hidden" name="action" value="add_broker">
+            {{ broker_form.as_p }}
+            <button type="submit">Add Broker</button>
+        </form>
+    </span>
+</div>
 
-<h2>Add a New Broker</h2>
-<form method="POST" action="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/">
-    {% csrf_token %}
-    <input type="hidden" name="action" value="add_broker">
-    {{ broker_form.as_p }}
-    <button type="submit">Add Broker</button>
-</form>

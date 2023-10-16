@@ -1,33 +1,51 @@
 {% load static %}
 <html>
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" type="text/css" href="{% static 'tradehook/home.css' %}">
     <title>TradeHook</title>
 </head>
-<body>
-    <h1 class="title-class">TradeHook</h1>
-    <div class="heading-container">
-        <h1><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/view/brokers_list/">Brokers</a></h1>
-        <h1><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/">My API Keys</a></h1>
-        <h1><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/view/event_logs/">Event Log</a></h1>
-        <h1><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/me/">Profile</a></h1>
-    
-    </div>
-    <!-- Rest of your HTML content -->
-
-    <h2 class="welcome-class">Welcome to TradeHook!</h2>
-    <p class="paragraph-class">
-
-        This site functions as a middleman between any webhook sender and compatible Brokerages.
-        Upon receiving a webhook this system will automatically process it and send it to the connected brokerage.
-        You will need to generate an api key for this site and include it in the webhook message. You will also
-        have to add brokerages to your account and insert your brokerage api key(s). This site also includes an event log
-        that contains the raw webhook message as well as the brokerage response. This site is very much a work in progress so I will be adding a feedback tab soon. 
-        I will be adding brokerages and possibly other features periodically. Also, currently this site only accepts paper trading
-        endpoints and api keys since I am inexperienced with security. Also sorry its ugly. I'm learning.
-       
-    
-    
-    </p>
-</body>
 </html>
+
+<body>
+    <div class="left-rectangle"></div>
+    
+    <div class="header">
+        <img class = "logo" src="{% static 'tradehook/FullLogo_Transparent.png' %}" alt="TradeHook Logo">
+    </div>
+
+    <div class="heading-container">
+        
+        <h1><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/">Login</a></h1>
+        <h1><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/register/">Register</a></h1>
+
+    </div>
+   
+    <div class="right-header">
+    
+        <h1><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/view/brokers_list/">Brokers</a></h1>
+        <h1><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/account/">Account</a></h1>
+
+    </div>
+
+    <div class = "intro">
+        <h2 class="welcome-class">Welcome to TradeHook!</h2>
+        <p class="paragraph-class">
+
+            This site allows you to automate trading through the use of webhooks.
+            Using TradingView's alert system to send webhooks to this site is recommended, but it can receive webhooks from any source.
+        </p>
+    
+
+    </div>
+
+    <div>
+        <h3 class="webhook_count">Webhooks Received: {{webhook_count}}</h3>
+    </div>
+
+
+</body>
+<footer class ="contact-info">
+    contact rileymartin523@gmail.com for inquiries
+</footer>
+

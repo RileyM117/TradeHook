@@ -1,56 +1,223 @@
-/* Reset some default browser styles */
-body, h2, form, input, button {
-    margin: 0;
-    padding: 0;
-}
-
-/* Set a background color and font for the entire page */
 body {
-    background-color: #f7f7f7;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #0d2033;
+    color:#c5a43c;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
 }
 
-/* Style the form container */
-form {
-    width: 300px;
-    margin: 0 auto;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-/* Style the form title */
-h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-/* Style form inputs */
-form input[type="text"], form input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-/* Style the register button */
-form button {
+.logo {
+    margin: -70px auto;
+    position: relative;
+    right: 0;
     display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
+    width: 400px;
+    height: auto;
+
 }
 
-form button:hover {
-    background-color: #0056b3;
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    text-align: center;
+    color: #c5a43c;
+    position: relative;
+    
+}
+
+form {
+    text-align: center;
+    margin-top: -40px;
+}
+
+.info-container{
+    background-color: #0d2033; /* Background color for the login container */
+    color: #eadb80;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    width: 50%; /* Adjust the width as needed (1/4 of the screen) */
+    padding: 20px;
+    margin: 0 auto; /* Center the container horizontally */
+    position: relative;
+    left: -35px;
+}
+
+/* Target the email input field and add padding to the left */
+
+
+form input[type="text"],
+form input[name="email"] {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    font-size: 18px;
+    width: 40%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #c5a43c;
+    position: relative;
+    left: 14px;
+    background-color: #ffffff;
+    color: #0d2033;
+    padding-left: 20px; /* Add left padding to move the text box away from the label */
+}
+
+form input[name="first_name"] {
+    position: relative;
+    left: -10px;
+    
+    
+}
+
+form input[name="last_name"] {
+    position: relative;
+    left: -9px;
+  
+}
+
+form input[name="username"] {
+    position: relative;
+    left: -7.5px;
+    
+    
+}
+
+form input[name="email"] {
+    position: relative;
+    left: 11px;
+    
+    
+}
+
+form input[name="password1"] {
+    position: relative;
+    left: -4.5px;
+    
+    
+}
+
+ul{
+    color:#eadb80;
+    list-style: none;
+}
+
+
+form input[type="text"],
+form input[type="password"] {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    font-size: 18px;
+    width: 40%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #c5a43c;
+    background-color: #ffffff;
+    color: #0d2033;
+
+}
+label[for="id_password2"] {
+    /* Styles for the label associated with the Email field */
+    color: #eadb80;
+    position: relative;
+    right: -55px;
+    bottom: -20px;
+    /* Add any other styles you want for the label */
+}
+
+label[for="id_email"] {
+    /* Styles for the label associated with the Email field */
+    position: relative;
+    right: -7px;
+}
+
+label[for="id_password1"] {
+    /* Styles for the label associated with the Email field */
+    position: relative;
+    right: 7px;
+}
+
+label[for="id_first_name"] {
+    /* Styles for the label associated with the Email field */
+    position: relative;
+    right: 10px;
+}
+
+label[for="id_last_name"] {
+    /* Styles for the label associated with the Email field */
+    position: relative;
+    right: 10px;
+}
+
+label[for="id_username"] {
+    /* Styles for the label associated with the Email field */
+    position: relative;
+    right: 9px;
+}
+
+#id_password2 {
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    left: 55px;
+    bottom: -20px;
+    
+
+}
+
+span{
+    color:#0d2033;
+    text-align: center;
+
+}
+
+form input[name="password2"] {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    font-size: 18px;
+    width: 40%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #c5a43c;
+    background-color: #ffffff;
+    color: #0d2033;
+    position: relative;
+    left: 100px;
+
+}
+
+button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    font-size: 20px;
+    color: #eadb80;
+    background-color: #0d2033;
+    border: 2px solid #c5a43c;
+    padding: 10px 20px;
+    cursor: pointer;
+    position: relative;
+    left: 690px;
+    top: 0px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: #c5a43c;
+    color: #0d2033;
+}
+
+a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    font-size: 18px;
+    color: #c5a43c;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.login-link{
+    position: relative;
+    text-align: center;
+    top: 0px;
+   
 }

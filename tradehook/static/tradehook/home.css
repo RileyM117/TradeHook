@@ -1,72 +1,139 @@
-/* Reset some default browser styles */
-body, h1, h2, p {
-    margin: 0;
-    padding: 0;
-}
-
-/* Set a background color and font for the entire page */
 body {
-    background-color: #f7f7f7;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color:  #0d2033;
+    /*overflow-y: hidden;*/
+    overflow-x: hidden;
 }
 
-/* Style the page title */
-.title-class {
-    text-align: center;
-    font-size: 48px;
-    color: #333;
-    margin-top: 30px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+.logo {
+    margin: -20px auto;
+    position: relative;
+    right: 30px;
+    display: block;
+    width: 400px;
+    height: auto;
+
 }
 
-/* Style the heading container */
 .heading-container {
-    text-align: center;
-    margin-top: 40px;
+    
+    text-align: left; 
 }
 
-/* Style the navigation links */
+.right-header {
+    
+    text-align: right;
+
+}
+
 .heading-container h1 {
     display: inline-block;
     margin: 0 20px;
-    font-size: 24px;
-    color: #007bff;
+}
+
+.right-header h1 {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.heading-container h1 a {
+    
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
     text-decoration: none;
-    transition: color 0.3s ease;
+    padding-left: 100px;
+    position: relative;
+    top: -150px;
+    color: #eadb80;
+    font-size: 30px;
+    transition: color 0.3s;
 }
 
-.heading-container h1:hover {
-    color: #0056b3;
+.right-header h1 a {
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    text-decoration: none;
+    padding-right: 100px;
+    position: relative;
+    top: -184px;
+    color: #eadb80;
+    font-size: 30px;
+    transition: color 0.3s;
 }
 
-/* Style the welcome message and paragraph */
+
+.heading-container h1 a:hover {
+    color: #c5a43c
+}
+
+.right-header h1 a:hover {
+    color: #c5a43c
+}
+
 .welcome-class {
+    font-size: 32px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    color: #c5a43c;  
     text-align: center;
-    font-size: 36px;
-    margin-top: 40px;
-    color: #444;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    position: relative;
+    right: 30px;
+    top:-80px;
 }
 
 .paragraph-class {
-    font-size: 20px;
-    color: #666;
-    margin: 30px auto;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    font-size: 24px;
     max-width: 800px;
+    color: #c5a43c; 
+    text-align: center;
+    margin: 0px auto;
+    line-height: 1.5; 
+    position: relative;
+    right: 30px;
+    top: -80px;
+}
+
+.detail-paragraph {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    font-size: 20px;
+    max-width: 800px;
+    color: #c5a43c; 
+    text-align: center;
+    margin: 20px auto;
     line-height: 1.5;
+    position: relative;
+    right: 30px;
+    top: -80px;
 }
 
-/* Add a subtle shadow to the heading container */
-.heading-container {
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
+.webhook_count{
+    font-size: 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 250;
+    color: rgba(197, 164, 60, 0.8);
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    position: absolute;
+    right: 675px;
+    top: 580px;
 }
 
-/* Add some padding to the page content */
-body > div {
-    padding: 20px;
+
+.contact-info {
+    text-align: center;
+    position: relative;
+    right: 30px;
+    top: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    font-size: 16px;
+    color: rgba(197, 164, 60, 0.6);
 }
 
 

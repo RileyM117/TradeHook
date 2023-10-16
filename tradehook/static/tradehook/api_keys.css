@@ -2,42 +2,103 @@
 body, h2, ul, li, p, button {
     margin: 0;
     padding: 0;
+    
 }
 
 /* Set a background color and font for the entire page */
 body {
-    background-color: #f7f7f7;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #0d2033;
+    font-family: 'Montserrat', sans-serif;
     padding: 20px;
+}
+
+.logo {
+    display: block;
+    margin: -75px auto;
+    width: 400px;
+    height: auto;
+   
 }
 
 /* Style the "Home" button */
 .home-button {
     display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
     padding: 10px 20px;
     font-size: 18px;
-    color: #007bff;
+    color: #c5a43c;
     text-decoration: none;
-    border: 2px solid #007bff;
+    border: 2px solid #c5a43c;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    position: absolute;
+    top: 35px;
 }
 
 .home-button:hover {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #c5a43c;
+    color: #0d2033;
+}
+
+.heading-container {
+    text-align: center;
+    margin: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    right: -25px;
+    top: 150px;
+}
+
+.heading-container h1 {
+    margin: 20px 50px;
+    
+}
+
+.apilink {
+    width: 250px;
+}
+
+.eventloglink {
+    width: 250px;
+}
+
+.heading-container h1 a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 20px;
+    color: #eadb80;
+    font-size: 30px;
+    transition: color 0.3s;
+}
+
+.heading-container h1 a:hover {
+    color: #c5a43c;
+}
+
+.whole {
+    /*display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;*/
+    position: absolute;
+    top: 250px;
+    left: 20px;
+    width: 250px;
 }
 
 /* Style the form buttons */
 form button {
     padding: 10px 20px;
     font-size: 18px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: #0d2033;
+    color: #0d2033;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin: 10px;
     transition: background-color 0.3s ease;
 }
 
@@ -45,11 +106,29 @@ form button:hover {
     background-color: #0056b3;
 }
 
+.apikey {
+    width: 700px;
+}
+
+.delete {
+    position: absolute;
+    left: 220px;
+    width: 200px;
+
+}
+
+.generate {
+    width: 200px;
+}
+
 /* Style the headings */
 h2 {
     font-size: 28px;
-    color: #333;
-    margin-top: 30px;
+    margin-top: 20px;
+    color: #c5a43c;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    width: 400px;
 }
 
 /* Style the list of brokers */
@@ -60,17 +139,24 @@ ul {
 }
 
 li {
-    border: 1px solid #ccc;
+    border: 1px solid #c5a43c;
     border-radius: 5px;
     padding: 10px;
     margin-bottom: 10px;
-    background-color: #fff;
+    background-color: #0d2033;
+    color: #eadb80;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 350;
+    width: 550px;
 }
 
 /* Style the API Key display */
 p {
-    font-size: 18px;
-    color: #444;
+    font-size: 20px;
+    color: #eadb80;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
     margin-top: 20px;
 }
 
@@ -82,26 +168,297 @@ form {
 /* Style form inputs and labels */
 form input[type="text"],
 form input[type="password"] {
-    width: 100%;
+    width: 500px;
     padding: 10px;
     font-size: 16px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.broker {
+    margin-top: 20px;
 }
 
 /* Style form buttons within forms */
 form button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
+    background-color: #0d2033;
+    color: #c5a43c;
+    border: 2px solid #c5a43c;
     border-radius: 5px;
     padding: 10px 20px;
     font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 form button[type="submit"]:hover {
+    background-color: #c5a43c;
+    color: #0d2033;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+/* Reset some default browser styles 
+body, h2, ul, li, p, button {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a background color and font for the entire page 
+body {
+    background-color: #0d2033;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    padding: 20px;
+}
+
+.logo {
+    margin: -40px auto;
+    position: relative;
+    right: 0;
+    display: block;
+    width: 400px;
+    height: auto;
+    bottom: 12%;
+
+}
+
+/* Style the "Home" button 
+.home-button {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #c5a43c;
+    text-decoration: none;
+    border: 2px solid #c5a43c;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #c5a43c;
+    color: #0d2033;
+}
+
+
+.heading-container {
+    border: none;
+    text-align: center;
+    margin: 20px 20px;
+    position: absolute;
+    bottom: 295px;
+    left: -85px;
+    display: flex;
+    justify-content: space-evenly; /* Adjust this property to control the spacing 
+    text-align: center;
+}
+
+.heading-container h1 {
+     /* Display headers horizontally 
+    margin: 10px 0px; /* Optional: Add spacing between headers 
+}
+
+.heading-container h1 a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 20px;
+    padding-left: 100px;
+    position: relative;
+    top: -150px;
+    color: #eadb80;
+    font-size: 30px;
+    transition: color 0.3s;
+    
+}
+
+.heading-container h1 a:hover {
+    color: #c5a43c
+}
+
+
+.whole{
+    position: absolute;
+    top: 320px;
+}
+
+.generate {
+    position: absolute;
+    top: 0px;
+}
+
+.delete {
+    position: absolute;
+    top: 0px;
+    left: 220px;
+}
+
+.apikey{
+    position: absolute;
+    top: -55px;
+
+}
+
+/* Style the form buttons 
+form button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color:#0d2033;
+    color:#0d2033;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /*margin: 10px;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
     background-color: #0056b3;
+}
+
+/* Style the headings 
+h2 {
+    font-size: 28px;
+    margin-top: 90px;
+    color:#c5a43c;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+/* Style the list of brokers 
+ul {
+    list-style-type: none;
+    margin: 20px 0;
+    padding: 0;
+    
+}
+
+li {
+    border: 1px solid #c5a43c;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color:#0d2033;
+    color: #eadb80;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 350;
+    width: 45%;
+}
+
+/* Style the API Key display 
+p {
+    font-size: 20px;
+    color: #eadb80;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    margin-top: 20px;
+}
+
+/* Style the forms 
+form {
+    margin-top: 20px;
+    
+}
+
+/* Style form inputs and labels 
+form input[type="text"],
+form input[type="password"] {
+    width: 40%;
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    
+    
+}
+
+.broker {
+    position: relative;
+    bottom: 50px;
+}
+
+/* Style form buttons within forms
+form button[type="submit"] {
+    background-color:#0d2033;
+    color:#c5a43c;
+    border: 2px solid #c5a43c;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color:#c5a43c;
+    color:#0d2033;
+}
+
+.apilink {
+    width: 250px;
+}
+
+.eventloglink {
+    width: 250px;
 }

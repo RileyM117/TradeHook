@@ -2,7 +2,11 @@ from django.urls import path
 from django.urls.conf import include
 from django.contrib.auth.views import LoginView, LogoutView
 from rest_framework_nested import routers
+from django.contrib.auth.decorators import login_required
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
 
@@ -35,15 +39,15 @@ urlpatterns = [path('webhook/', views.webhook_receiver, name='webhook_receiver')
                
                path('home/', views.home_page,name='home-page'),
                
-               path('me/',views.MeView.as_view(),name='customer-me'),
+               path('me/',csrf_protect(login_required(views.MeView.as_view())),name='customer-me'),
                path('view/brokers_list/', views.brokers_list, name='brokers-list'),
-               path('manage/my_api_keys/', views.APIKeyView.as_view(), name='my_api_keys'),
-               path('view/event_logs/', views.EventLogView.as_view(), name='event_log'),
-
+               path('manage/my_api_keys/', csrf_protect(login_required(views.APIKeyView.as_view())), name='my_api_keys'),
+               path('view/event_logs/', csrf_protect(login_required(views.EventLogView.as_view())), name='event_log'),
+               path('account/', csrf_protect(views.account),name='account'),
                path('register/', views.register, name='register'),
                #path('login/', LoginView.as_view(), name='login'),
                path('logout/', LogoutView.as_view(), name='logout'),
-]
+] 
 urlpatterns += router.urls + api_keys_router.urls + event_logs_router.urls + brokers_router.urls + customer_brokers_router.urls + users_router.urls 
 urlpatterns += staticfiles_urlpatterns()
 

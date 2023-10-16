@@ -6,61 +6,140 @@ body, h1, table, th, td {
 
 /* Set a background color and font for the entire page */
 body {
-    background-color: #f7f7f7;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #0d2033;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.logo {
+    margin: 0px;
+    position: absolute;
+    right: 36.8%;
+    width: 400px;
+    height: auto;
+    bottom: 63%;
+
+}
+
+.whole{
+    position: absolute;
+    top: 220px;
 }
 
 /* Style the page title */
 h1 {
     text-align: center;
     font-size: 32px;
-    color: #333;
+    color: #c5a43c;;
     margin-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    position: relative;
+    top: 20px;
+}
+
+.apilink {
+    width: 200px;
+}
+
+.eventloglink {
+    width: 200px;
 }
 
 /* Style the navigation links */
 .home-button {
     display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
     padding: 10px 20px;
     font-size: 18px;
-    color: #007bff;
+    color: #c5a43c;
     text-decoration: none;
-    border: 2px solid #007bff;
+    border: 2px solid #c5a43c;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
+    position: absolute;
+    top: -185px;
+    left: 20px;
 }
 
 .home-button:hover {
-    background-color: #0056b3;
+    background-color: #c5a43c;
+    color: #0d2033;
 }
+
+.heading-container {
+    border: none;
+    text-align: center;
+    margin: 20px 20px;
+    position: absolute;
+    bottom: 325px;
+    right: 70px;
+    display: flex;
+    justify-content: space-evenly; /* Adjust this property to control the spacing */
+    text-align: center;
+}
+
+.heading-container h1 {
+     /* Display headers horizontally */
+    margin: 10px 0px; /* Optional: Add spacing between headers */
+}
+
+.heading-container h1 a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 20px;
+    padding-left: 100px;
+    position: relative;
+    top: -150px;
+    color: #eadb80;
+    font-size: 30px;
+    transition: color 0.3s;
+    
+}
+
+.heading-container h1 a:hover {
+    color: #c5a43c
+}
+
+
 
 /* Style the table */
 table {
     border-collapse: collapse;
     width: 80%;
     margin: 20px auto;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #0d2033;
+    color:#eadb80;
+    position: relative;
+    top: 20px;
+  
+    
 }
 
 /* Style the table header */
 th {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #0d2033;
+    color: #eadb80;
     font-weight: bold;
     padding: 10px;
     text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
 }
 
 /* Style the table rows */
 tr:nth-child(even) {
-    background-color: #f2f2f2;
+    background-color: #0d2033;
 }
 
 /* Style the table data cells */
 td, th {
     padding: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid #c5a43c;
+    
 }
 
 /* Style the table responsive on smaller screens */

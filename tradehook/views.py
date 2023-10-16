@@ -1,6 +1,6 @@
 import json
 from .broker_apis import alpaca_orders
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponseBadRequest, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.contrib.auth.decorators import login_required
@@ -25,7 +25,7 @@ from django.http import JsonResponse
 from django_filters.rest_framework import DjangoFilterBackend
 from django.contrib.auth.forms import AuthenticationForm
 from rest_framework.filters import SearchFilter, OrderingFilter
-from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_exempt, csrf_protect
 import alpaca_trade_api as alpaca
 import jwt, datetime
 from .models import *
@@ -34,7 +34,7 @@ from .forms import *
 from .serializers import *
 from.pagination import *
 ALPACA_API_BASE_URL = "https://paper-api.alpaca.markets"
-
+ALPACA_LIVE_URL = "https://api.alpaca.markets" # not actually sure of this
 #___________________________________________________________________________________________________________________________________________#
 # Backend ViewSets
 
@@ -117,48 +117,63 @@ class BrokerViewSet(ListModelMixin,DestroyModelMixin,RetrieveModelMixin,GenericV
 # Frontend Views
 
 
+#def register(request):
+    #if request.method == 'POST':
+    #    # If the form has been submitted, create a UserCreationForm instance with the POST data
+    #    form = UserRegistrationForm(request.POST)
+    #    if form.is_valid():
+    #        # If the form is valid, save the user and log them in
+    #        user = form.save()
+    #        login(request, user)
+    #        return redirect(settings.LOGIN_REDIRECT_URL)  # Replace 'home' with the URL name of your home page
+    #else:
+    #    # If it's a GET request, display an empty registration form
+    #    form = UserRegistrationForm()
+    #
+    #return render(request, 'registration/register.html', {'form': form})
+
 def register(request):
     if request.method == 'POST':
-        # If the form has been submitted, create a UserCreationForm instance with the POST data
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            # If the form is valid, save the user and log them in
             user = form.save()
             login(request, user)
-            return redirect(settings.LOGIN_REDIRECT_URL)  # Replace 'home' with the URL name of your home page
+            return redirect(settings.LOGIN_REDIRECT_URL)
+            # Your registration logic here
     else:
-        # If it's a GET request, display an empty registration form
         form = UserRegistrationForm()
-    
+
+    # Customize the labels here
+    form.fields['first_name'].label = "First Name"
+    form.fields['last_name'].label = "Last Name"
+    form.fields['username'].label = "Username"
+    form.fields['email'].label = "Email"
+    form.fields['password1'].label = "Password"
+    form.fields['password2'].label = "Password Confirmation"
+
     return render(request, 'registration/register.html', {'form': form})
 
-@login_required
+
 def home_page(request):
-    return render(request,'home.html')
+    webhook_count = EventLog.objects.all().count()
+    return render(request,'home.html', {'webhook_count': webhook_count})
 
 
 def brokers_list(request):
     brokers = Broker.objects.all()
     return render(request, 'brokers_list.html', {'brokers': brokers})
 
+def account(request):
+    return render(request,'setup_guide.html')
 
 class MeView(View):
-    permission_classes = [IsAuthenticated]
 
-    
     def get(self,request,*args,**kwargs):
         user = request.user
-        if request.method == 'GET':
-            serializer = UserSerializer(user)
-            return render(request, 'customer_profile.html', {'customer': serializer.data})
-        elif request.method == 'PUT':
-            serializer = UserSerializer(user, data=request.data)
-            serializer.is_valid(raise_exception=True)
-            serializer.save()
-        
-
+        serializer = UserSerializer(user)
+        return render(request, 'customer_profile.html', {'customer': serializer.data})
+    
 class EventLogView(View):
-    permission_classes = [IsAuthenticated]
     
     def get(self, request, *args, **kwargs):
         user = request.user
@@ -178,7 +193,6 @@ class EventLogView(View):
 
 
 class APIKeyView(View):
-    permission_classes = [IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
         user = request.user
@@ -207,14 +221,14 @@ class APIKeyView(View):
             api_key, created = APIKeys.objects.get_or_create(user=user)
             if not created:
                 return JsonResponse({'error': 'API key already exists.'}, status=400)
-            #return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+            #return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
             return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
 
         elif request.POST.get('action') == 'delete':
             try:
                 api_key = APIKeys.objects.get(user=user)
                 api_key.delete()
-                #return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+                #return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
                 return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
             except APIKeys.DoesNotExist:
                 return JsonResponse({'error': 'API key not found.'}, status=404)
@@ -227,10 +241,10 @@ class APIKeyView(View):
                     broker = broker_form.save(commit=False)
                     broker.user = user
                     broker.save()
-                    #return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+                    #return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
                     return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
             except:
-                #return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+                #return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
                 return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
           
             
@@ -239,7 +253,7 @@ class APIKeyView(View):
             try:
                 broker = CustomerBrokers.objects.get(id=broker_id, user=user)
                 broker.delete()
-                #return redirect('http://127.0.0.1:8000/tradehook/manage/my_api_keys/')
+                #return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
                 return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
             except CustomerBrokers.DoesNotExist:
                 return JsonResponse({'error': 'Broker not found.'}, status=404)
@@ -285,21 +299,17 @@ def webhook_receiver(request):
         #broker = customer_broker.broker_name
         broker_api_key = customer_broker.broker_api_key
         broker_secret_key = customer_broker.broker_secret_key
-        api = alpaca.REST(broker_api_key, broker_secret_key, ALPACA_API_BASE_URL, api_version='v2')
+        if 'Paper' in broker_name:
+            api = alpaca.REST(broker_api_key, broker_secret_key, ALPACA_API_BASE_URL, api_version='v2')
+        else:
+            api = alpaca.REST(broker_api_key, broker_secret_key, ALPACA_LIVE_URL, api_version='v2')
           
-        #order = api.submit_order(
-        #symbol=data['ticker'],
-        #qty=data['qty'],
-        #side='buy',
-        #type='market',
-        #time_in_force='gtc'  # Good 'til Cancelled
-        #)
         order = alpaca_orders.place_order(data,api)
         
 
                 
     # Get the full JSON response for the order
-        broker_response = order#json.dumps(order._raw)
+        broker_response = order
         EventLog.objects.create(
         user=user,
         webhook_data=data,
@@ -307,6 +317,7 @@ def webhook_receiver(request):
         )
         
         return JsonResponse({'message': 'Webhook data processed and saved successfully'}, status=status.HTTP_201_CREATED)
+    return HttpResponseBadRequest('Only POST requests are supported for this endpoint')
 
 
 

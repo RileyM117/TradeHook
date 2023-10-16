@@ -115,7 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -224,3 +224,5 @@ SESSION_COOKIE_AGE = 3600
 
 # Reset the session expiration timer on every request
 SESSION_SAVE_EVERY_REQUEST = True
+
+

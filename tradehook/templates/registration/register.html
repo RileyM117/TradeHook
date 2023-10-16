@@ -2,14 +2,19 @@
 <html>
 <head>
     <title>Register</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap">
     <link rel="stylesheet" type="text/css" href="{% static 'tradehook/register.css' %}">
 </head>
 <body>
+    <img class = "logo" src="{% static 'tradehook/FullLogo_Transparent.png' %}" alt="TradeHook Logo">
     <h2>Register</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <div class="info-container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+    </div>
         <button type="submit">Register</button>
     </form>
+    <p class="login-link">Already have an account? <a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/">Login!</a></p>
 </body>
 </html>

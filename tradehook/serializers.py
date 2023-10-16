@@ -8,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = User
-        fields = ['id', 'user_id','email','first_name','last_name','password']
+        fields = ['id', 'user_id','email','first_name','last_name','username','password']
         
 class CustomerBrokersSerializer(serializers.ModelSerializer):
     user_id = serializers.IntegerField()

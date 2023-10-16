@@ -36,5 +36,5 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 2525
 
 LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000/tradehook/home/'
-LOGOUT_REDIRECT_URL = 'http://127.0.0.1:8000/tradehook/login/'
-LOGIN_URL = 'http://127.0.0.1:8000/tradehook/login/'
+LOGOUT_REDIRECT_URL = 'http://127.0.0.1:8000/'
+LOGIN_URL = 'http://127.0.0.1:8000/'
