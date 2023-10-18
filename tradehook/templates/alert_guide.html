@@ -1,0 +1,62 @@
+{% load static %}
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert Guide</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap">
+    <link rel="stylesheet" href="{% static 'tradehook/alert_guide.css' %}">
+
+</head>
+
+<body>
+
+    <img class = "logo" src="{% static 'tradehook/FullLogo_Transparent.png' %}" alt="TradeHook Logo">
+    <a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/account/" class="home-button">Account</a>
+    <div class="whole">
+        <h1>Alert Guide</h1>
+           <h2>Alpaca and Alpaca - Paper</h2>
+               <ul class="webhooklist"> 
+                   <h3>Webhook Format</h3>
+                   <li>alert('{"ticker": "' + syminfo.ticker + '", "qty": "1", "side": "buy", "time_in_force": "gtc", "broker_name": "Alpaca", "order_type": "bracket_order", "bracket_stop_loss": ' + str.tostring(bracket_stop_loss) + ',"bracket_limit_price": ' + str.tostring(bracket_limit_price) + ',"bracket_take_profit": ' + str.tostring(bracket_take_profit) + ',"tradehook_api_key":"Enter Your TradeHook API Key"}',freq=alert.freq_once_per_bar_close)</li>
+                   <li>Json message returned: {"ticker": "LTCUSD", "qty": "1", "side": "buy", "time_in_force": "gtc", "broker_name": "Alpaca", "order_type": "bracket_order", "bracket_stop_loss": 60.8355,"bracket_limit_price": 60.221,"bracket_take_profit": 62.679, "tradehook_api_key":"Enter Your TradeHook API Key"}</li>
+
+               </ul>
+
+               <ul> 
+                   <h3>Order Types and Parameters for Stock Orders</h3>
+                   <li>simple_order : 'ticker', 'qty', 'side', 'time_in_force'</li>
+                   <li>limit_order : 'ticker', 'qty', 'side', 'time_in_force', 'limit_price'</li>
+                   <li>stop_loss_order : 'ticker', 'qty', 'side', 'time_in_force', 'stop_loss'</li>
+                   <li>bracket_order : 'ticker', 'qty', 'side', 'time_in_force', 'bracket_stop_loss','bracket_limit_price','bracket_take_profit'</li>
+                   <li>trailing_stop_order : 'ticker', 'qty', 'side', 'time_in_force', 'trail_price'</li>
+                   <li>stop_price_order : 'ticker', 'qty', 'side', 'time_in_force', 'stop_price', 'limit_price'</li>
+
+               </ul>
+               <div class="cryptoinfo">
+
+                   <p>Crypto buys through Alpaca are only compatible with simple, limit, and stop_price orders.
+                      You must also use different order types to sell Crypto due to fees.
+                   </p>
+                   <ul class="borderless"> 
+                       <h3>Order Types and Parameters for Crypto Sell Orders</h3>
+                       <li>crypto_simple_sell : 'ticker', 'qty', 'time_in_force'</li>
+                       <li>crypto_limit_sell : 'ticker', 'qty', 'time_in_force', 'limit_price'</li>
+                       <li>crypto_stop_price_sell : 'ticker', 'qty', 'time_in_force','limit_price','stop_price'</li>
+                   </ul>
+
+               </div>
+    </div>
+            <div class="heading-container">
+        
+                <h1><a class="profilelink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/me/">Profile</a></h1>
+                <h1><a class="apilink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/">My API Keys</a></h1>
+                <!--<h1><a class="setuplink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/account/">Account</a></h1>-->
+                <h1><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/view/event_logs/">Event Logs</a></h1>
+                <h1><a class="logoutlink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/logout/">Logout</a></h1>
+        
+        
+            </div>
+    
+
+</body>

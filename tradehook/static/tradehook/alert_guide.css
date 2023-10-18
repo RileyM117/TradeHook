@@ -1,0 +1,166 @@
+/* styles.css */
+
+/* Reset some default browser styles */
+body, h1, h2, p, label, input, button {
+    margin: 0;
+    padding: 0;
+    color:#c5a43c;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    
+    
+}
+
+h1 {
+    margin: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+h2 {
+    margin: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+/* Set a background color and font for the entire page */
+body {
+    background-color: #0d2033;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+}
+
+.logo {
+    margin: -0px auto;
+    position: relative;
+    right: 0;
+    display: block;
+    width: 400px;
+    height: auto;
+    bottom: 8%;
+
+}
+
+
+.home-button {
+    display: inline-block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: #c5a43c;
+    text-decoration: none;
+    border: 2px solid #c5a43c;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+    bottom: 285px;
+    left: 20px;
+}
+
+.home-button:hover {
+    background-color: #c5a43c;
+    color: #0d2033;
+}
+
+
+.heading-container {
+    border: none;
+    text-align: center;
+    margin: 20px 20px;
+    position: relative;
+    bottom: 600px;
+    right: 52px;
+    display: flex;
+    justify-content: space-evenly; /* Adjust this property to control the spacing */
+    text-align: center;
+}
+
+.heading-container h1 {
+     /* Display headers horizontally */
+    margin: 10px 0px; /* Optional: Add spacing between headers */
+}
+
+.heading-container h1 a {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 20px;
+    padding-left: 100px;
+    position: relative;
+    top: 400px;
+    color: #eadb80;
+    font-size: 30px;
+    transition: color 0.3s;
+    
+}
+
+.heading-container h1 a:hover {
+    color: #c5a43c
+}
+
+
+.whole{
+    position: absolute;
+    top: 250px;
+    
+}
+
+/* Style the page title */
+.page-header {
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    font-size: 36px;
+    color: #c5a43c;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    right: 62px;
+}
+
+p{
+    color:#c5a43c;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 450;
+    font-size: 20px;
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 40px;
+}
+
+ul{
+    list-style-type: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 350;
+    /*margin: 20px 20px;*/
+    border: 1px solid #c5a43c;
+    border-radius: 5px;
+    width: 900px;
+}
+
+li {
+    color:#eadb80;
+    margin: 20px 0px;
+}
+
+.webhooklist{
+    
+    border: 1px solid #c5a43c;
+    /*width: 900px;*/
+    border-radius: 5px;
+}
+
+.cryptoinfo{
+    border: 1px solid #c5a43c;
+    border-radius: 5px;
+    width: 941px;
+    /*margin: 0px 20px;*/
+}
+
+.borderless{
+    border: none;
+}

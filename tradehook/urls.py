@@ -44,6 +44,7 @@ urlpatterns = [path('webhook/', views.webhook_receiver, name='webhook_receiver')
                path('manage/my_api_keys/', csrf_protect(login_required(views.APIKeyView.as_view())), name='my_api_keys'),
                path('view/event_logs/', csrf_protect(login_required(views.EventLogView.as_view())), name='event_log'),
                path('account/', csrf_protect(views.account),name='account'),
+               path('alert_guide/',csrf_protect(views.alert_guide),name='alert-guide'),
                path('register/', views.register, name='register'),
                #path('login/', LoginView.as_view(), name='login'),
                path('logout/', LogoutView.as_view(), name='logout'),

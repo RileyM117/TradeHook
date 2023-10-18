@@ -43,16 +43,16 @@ body {
 
 .heading-container {
     text-align: center;
-    margin: 20px;
+    margin:20px;
     display: flex;
     justify-content: space-evenly;
     position: absolute;
-    right: -25px;
+    right: 10px;
     top: 150px;
 }
 
 .heading-container h1 {
-    margin: 20px 50px;
+    margin: 20px 35px;
     
 }
 
@@ -62,6 +62,11 @@ body {
 
 .eventloglink {
     width: 250px;
+}
+
+
+.setuplink {
+    width: 200px;
 }
 
 .heading-container h1 a {

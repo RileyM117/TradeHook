@@ -166,6 +166,9 @@ def brokers_list(request):
 def account(request):
     return render(request,'setup_guide.html')
 
+def alert_guide(request):
+    return render(request,'alert_guide.html')
+
 class MeView(View):
 
     def get(self,request,*args,**kwargs):
