@@ -1,8 +1,4 @@
-from django.contrib import admin, messages
-from django.db.models.aggregates import Count
-from django.db.models.query import QuerySet
-from django.utils.html import format_html, urlencode
-from django.urls import reverse
+from django.contrib import admin
 from . import models
 # Register your models here.
 
@@ -28,6 +24,7 @@ class CustomerBrokersAdmin(admin.ModelAdmin):
     list_select_related = ['user']
     ordering = ['user_id']
 
+    # methods to display user information associated with model object.
     @admin.display()
     def user_first_name(self,customerbrokers):
         return customerbrokers.user.first_name

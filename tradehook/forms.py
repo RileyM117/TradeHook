@@ -2,16 +2,19 @@ from django import forms
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
 
+# Custom user creation form.
 class UserRegistrationForm(UserCreationForm):
     class Meta:
         model = User
         fields = ('first_name','last_name','username', 'email', 'password1')
 
+# Form for user to create a Customer Broker model object.
 class CustomerBrokerForm(forms.ModelForm):
     class Meta:
         model = CustomerBrokers
         fields = ['broker_name', 'broker_api_key', 'broker_secret_key']
-
+        
+# Form for user to generate a TradeHook API Key
 class APIKeyForm(forms.ModelForm):
     class Meta:
         model = APIKeys

@@ -26,6 +26,7 @@ alpaca-trade-api = "*"
 pyjwt = "*"
 dj-database-url = "*"
 django-silk = "*"
+v20 = "*"
 
 [dev-packages]
 autopep8 = "*"

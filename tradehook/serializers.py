@@ -1,8 +1,7 @@
-from django.db import transaction
 from rest_framework import serializers
-from django.conf import settings
 from .models import *
 
+# Defines user information to be shown in backend.
 class UserSerializer(serializers.ModelSerializer):
     user_id = serializers.IntegerField(read_only=True)
     
@@ -18,6 +17,7 @@ class CustomerBrokersSerializer(serializers.ModelSerializer):
         fields = ['id','user_id','broker_name','broker_api_key','broker_secret_key']
    
 class APIKeysSerializer(serializers.ModelSerializer):
+    # maintains tradehook_api_key being generated.
     tradehook_api_key = serializers.UUIDField(read_only=True)
     user_id = serializers.IntegerField()
     

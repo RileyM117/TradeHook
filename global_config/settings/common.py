@@ -14,8 +14,10 @@ from pathlib import Path
 from datetime import timedelta
 from celery.schedules import crontab
 import os
+# Settings for both development and production
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 
@@ -53,8 +55,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-#if DEBUG:
-#    MIDDLEWARE += ['silk.middleware.SilkyMiddleware']
+
 
 ROOT_URLCONF = 'global_config.urls'
 
@@ -79,6 +80,8 @@ WSGI_APPLICATION = 'global_config.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+
+# local database
 
 DATABASES = {
     'default': {
@@ -141,12 +144,17 @@ INTERNAL_IPS = [
     "127.0.0.1",
     # ...
 ]
+
+# for web token authentication
+
 #REST_FRAMEWORK = {
 #    'COERCE_DECIMAL_TO_STRING': False,
 #    'DEFAULT_AUTHENTICATION_CLASSES': (
 #        'rest_framework_simplejwt.authentication.JWTAuthentication',
 #    ),
 #}
+
+# for session authentication
 
 REST_FRAMEWORK = {
     'COERCE_DECIMAL_TO_STRING': False,
@@ -155,6 +163,8 @@ REST_FRAMEWORK = {
         # Other authentication classes, if needed
     ),
 }
+
+# Setting custom user model
 
 AUTH_USER_MODEL = 'tradehook.User'
 

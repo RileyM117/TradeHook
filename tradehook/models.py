@@ -1,16 +1,9 @@
-from typing import Any
 import uuid
-from django.contrib import admin
-from django.conf import settings
-from django.core.validators import MinValueValidator, FileExtensionValidator
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-from uuid import uuid4
 from django.utils import timezone   
-# MAKE USER MODEL HERE GET RID OF USER APP ITS PRETTY USELESS
-#api_key = 'PK7N6TD62B2SRYC1YJJ6'
-#secret_key = '3AWPZhEjvFSJJMKhB7qMQ1jSMirwdLtGL2VAOMpB'
 
+# Custom User manager to define required information to create user and superuser
 class CustomerAccountManager(BaseUserManager):
 
     def create_user(self,email,username,first_name,last_name,password,**other_fields):
@@ -34,9 +27,10 @@ class CustomerAccountManager(BaseUserManager):
 
         return self.create_user(email, username, first_name, last_name, password, **other_fields)
 
+# Custom user class.
 class User(AbstractBaseUser, PermissionsMixin):
     
-    
+    # Cannot have two accounts with the same email.
     email = models.EmailField(unique=True)
     username = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
@@ -50,18 +44,17 @@ class User(AbstractBaseUser, PermissionsMixin):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username','first_name','last_name']
 
-    
-    #birth_date = models.DateTimeField(null=True,blank=True)
-
     def __str__(self) -> str:
         return self.username
 
 class CustomerBrokers(models.Model):
+    # All current and future brokers will be heres
     ALPACA = 'Alpaca'
     ALPACA_PAPER = 'Alpaca - Paper'
     #OANDA = 'Oanda'
     #TRADESTATION = 'Tradestation'
 
+    # Defines available brokers
     MEMBERSHIP_CHOICES = [
         (ALPACA, 'Alpaca'),
         (ALPACA_PAPER, 'Alpaca - Paper'),
@@ -69,13 +62,18 @@ class CustomerBrokers(models.Model):
         #(TRADESTATION, 'Tradestation'),
     ]
 
+    # CustomerBroker objects are attached to users, upon deleting user, customerbroker object is also deleted
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
     broker_name = models.CharField(
         max_length=255, choices=MEMBERSHIP_CHOICES)
    
     broker_api_key = models.CharField(max_length=255)
-    broker_secret_key = models.CharField(max_length=255)
 
+    # Some brokers may only provide one api key so the secret key is optional. 
+    broker_secret_key = models.CharField(max_length=255, null=True, blank=True)
+
+    # A user can only have one of each broker.
     class Meta:
         unique_together = ('user', 'broker_name')
     
@@ -88,6 +86,8 @@ class EventLog(models.Model):
 
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     received_at = models.DateTimeField(default=timezone.now)
+
+    # Both webhook_data and broker_response are model fields that will be filled by post requests from other servers.
     webhook_data = models.JSONField()
     broker_response = models.JSONField()
 

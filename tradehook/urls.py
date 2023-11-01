@@ -1,15 +1,13 @@
 from django.urls import path
-from django.urls.conf import include
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import LogoutView
 from rest_framework_nested import routers
 from django.contrib.auth.decorators import login_required
 from django.urls import path
-from django.conf import settings
-from django.conf.urls.static import static
-from django.views.decorators.csrf import csrf_exempt, csrf_protect
+from django.views.decorators.csrf import csrf_protect
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from . import views
 
+# registering backend endpoints.
 router = routers.DefaultRouter()
 router.register('users',views.UserViewSet,basename='users')
 router.register('api_keys',views.APIKeysViewSet,basename='api_keys')
@@ -34,7 +32,7 @@ customer_brokers_router = routers.NestedDefaultRouter(
 )
 
 
-
+# registering frontend endpoints
 urlpatterns = [path('webhook/', views.webhook_receiver, name='webhook_receiver'),
                
                path('home/', views.home_page,name='home-page'),

@@ -16282,3 +16282,60 @@ AssertionError: .accepted_renderer not set on Response
 2023-10-18 12:55:35,907 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
 2023-10-18 12:58:41,552 (INFO) - django.utils.autoreload - /mnt/c/Users/riley/trader/tradehook/views.py changed, reloading.
 2023-10-18 12:58:42,331 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2023-10-20 12:10:47,390 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2023-10-20 12:11:39,822 (INFO) - django.utils.autoreload - /mnt/c/Users/riley/trader/tradehook/views.py changed, reloading.
+2023-10-20 12:11:40,718 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2023-10-20 12:12:07,052 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:14:30,030 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:14:50,606 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:15:02,802 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:15:09,551 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:15:27,362 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:15:39,687 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:15:48,111 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:16:09,391 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:16:30,210 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:17:20,969 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:17:33,754 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:17:39,930 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:18:13,569 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:18:38,063 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:18:44,554 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:18:50,244 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:19:00,957 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:19:13,770 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:20:28,852 (INFO) - django.utils.autoreload - /mnt/c/Users/riley/trader/tradehook/forms.py changed, reloading.
+2023-10-20 12:20:30,046 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2023-10-20 12:22:42,233 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:23:24,810 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:23:36,776 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:23:46,783 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:23:54,226 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:24:13,211 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:28:26,923 (INFO) - django.utils.autoreload - /mnt/c/Users/riley/trader/tradehook/models.py changed, reloading.
+2023-10-20 12:28:27,788 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2023-10-20 12:29:20,702 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:29:37,238 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:29:51,316 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:30:11,133 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:30:17,973 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:30:25,510 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:30:34,140 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:31:30,390 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:31:36,404 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:31:46,365 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:31:51,209 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:32:05,505 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:32:11,275 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:32:15,234 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:34:02,856 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:34:53,537 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:35:07,784 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:35:12,632 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:35:32,737 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:35:49,871 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:35:56,885 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:36:08,585 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:36:36,193 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:37:02,875 (WARNING) - django.request - Not Found: /favicon.ico
+2023-10-20 12:38:04,994 (WARNING) - django.request - Not Found: /favicon.ico
