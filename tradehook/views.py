@@ -12,6 +12,7 @@ from django.conf import settings
 from rest_framework import status
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework.decorators import api_view
 import alpaca_trade_api as alpaca
 from .models import *
 from .permissions import *
@@ -268,6 +269,7 @@ class APIKeyView(View):
 # This logic is in a view so that it can be easily applied to an endpoint. 
 # it is csrf exempt since it does not have direct server-client interactions.
 @csrf_exempt
+#@api_view(['POST'])
 def webhook_receiver(request):
     # Check for post request
     if request.method == 'POST':
