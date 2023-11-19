@@ -294,7 +294,7 @@ class Order:
          order_qty = float(api.get_position(message['ticker']).qty)
          order_qty_mod = order_qty /math.ceil(order_qty)
          order_qty_mod_final = round(order_qty_mod,4)
-         qty = round(message['qty'] * order_qty_mod_final,4)
+         qty = round(order_qty * order_qty_mod_final,4)
          order = api.submit_order(
           symbol=message['ticker'],
           qty=qty,
