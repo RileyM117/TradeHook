@@ -242,7 +242,7 @@ class Order:
         order = api.submit_order(
                     symbol=message['ticker'],
                     qty=qty,
-                    side='sell',
+                    side=message['side'],
                     type='stop_limit',
                     time_in_force=message['time_in_force'],
                     stop_price = message['stop_price'],
@@ -271,7 +271,7 @@ class Order:
          order = api.submit_order(
           symbol=message['ticker'],
           qty=qty,
-          side='sell',
+          side=message['side'],
           type='market',
           time_in_force='gtc'  # Good 'til Cancelled
          )
@@ -292,13 +292,10 @@ class Order:
     def crypto_sell_all(message,api):
          api=api
          order_qty = float(api.get_position(message['ticker']).qty)
-         #order_qty_mod = order_qty /math.ceil(order_qty)
-         #order_qty_mod_final = round(order_qty_mod,4)
-         #qty = round(order_qty * order_qty_mod_final,4)
          order = api.submit_order(
           symbol=message['ticker'],
           qty=order_qty,
-          side='sell',
+          side=message['side'],
           type='market',
           time_in_force='gtc'  # Good 'til Cancelled
          )
