@@ -6,53 +6,49 @@ html {
     margin: 0;
 }
 
-:root {
-    --header-bars-odd-color: rgba(8,153,129,1);
-    --header-bars-even-color: rgba(242,54,69,1);
-    --header-title-color: white;
-    --header-link-color: rgba(255,255,255,0.6);
-    --header-link-hover-color: black;
-    --header-theme-change-button-color: purple;
-
-    --login-welcome-color: black;
-    --login-form-text-color: black;
-    --login-form-background-color: white;
-    --login-form-border-color-active: black;
-    --login-form-register-color: rgba(0,0,0,0.7);
-    --login-form-register-hover-color: rgba(0,0,0,1);
-    --login-form-login-button-color: black;
-    --login-form-login-button-background-color: white;
-
-    --button-text-color: white;
-    --button-background-color: rgba(0,0,0,0.75);
-    --button-hover-background-color: rgba(0,0,0,0.9);
-    --button-active-background-color: rgba(0,0,0,1);
-
-    
-
-    --footer-text-color: black;
-
-    transition: 1000ms;
-}
-
-html.light-theme {
-    --login-welcome-color: black;
-    --login-form-text-color: black;
-    --login-form-background-color: white;
-    --login-form-border-color-active: black;
-    --login-form-register-color: rgba(0,0,0,.7);
-    --login-form-register-hover-color: rgba(0,0,0,1);
-    --login-form-login-button-color: black;
-    --login-form-login-button-background-color: black;
-
-    --button-text-color: white;
-    --button-background-color: rgba(0,0,0,0.5);
-    --button-hover-background-color: rgba(0,0,0,0.75);
-    --button-active-background-color: rgba(0,0,0,1);
-
-}
-
 .login-form-container {
-    margin-top: 200px!important;
-    height: 650px!important;
+    margin-top: 10vh!important;
+    height: 500px!important;
+}
+
+#login-text {
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.login-form {
+    grid-template-rows: 2vh 2vh 2vh 2vh 2vh 2vh 2vh!important;
+    margin-bottom: 80px;
+}
+
+button {
+    margin-top: 5vh;
+}
+
+@media (height < 601px) {
+    .login-form-container {
+        margin-top: 30px!important;
+        height: 400px!important;
+    }
+    
+    #login-text {
+        margin: 0!important;
+        padding: 0!important;
+        margin-top: 10px!important;
+        margin-bottom: 10px!important;
+    }
+    
+    .login-form {
+        grid-template-rows: repeat(6,25px)!important;
+        margin-bottom: 80px!important;
+    }
+    
+    button {
+        width: 100px;
+        height: 40px;
+        margin-top: 20px!important;
+    }
+    
 }

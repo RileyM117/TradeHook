@@ -45,807 +45,75 @@ height: 100vh;
 overflow-y: scroll;
 
 100vh just covers initial viewport size so if you scroll down it doesnt cover full height,
-UNLESS you add vertical scroll (Test without overflow-y: scroll; and see difference)
-
-
+UNLESS you add vertical scroll (Test without overflow-y: scroll; and see difference) */
 
 * {
     box-sizing: border-box;
 }
 
 :root {
+
+    --background-color-1: #202c43;
+    --background-color-2: #2e3f5f;
+    --background-color-3: #6593c7;
+    --background-color-4: #adc4d8;
+
     --header-background-color: white;
-    --header-bars-odd-color: rgba(242,54,69,1);
-    --header-bars-even-color: rgba(8,153,129,1);
-    --header-title-color: #1E3330;
-    --header-link-color: #1E3330;
-    --header-link-hover-color: #1E3330.
-    --header-theme-change-button-color: white;
-    --main-background-color: var(--header-title-color);
-    --main-welcome-header-color: #1E3330;
-    --main-description-color: #1E3330;
-    --main-list-title-color: #1E3330;
-    --footer-text-color: #1E3330;
-    --blur: 0.15rem;
-    --blur-background-color: rgba(0, 0, 0, 0.3);
-    --background-blur-image: none;
+    --header-text-color: var(--background-color-1);
+    --link-text-color: var(--background-color-1);
+    --link-text-color-hover: #131b2a;
 
-    --broker-background-color: white;
-    --coinbase-background-color: var(--broker-background-color);
-    --interactive-brokers-background-color: var(--broker-background-color);
-    --kraken-background-color: var(--broker-background-color);
+    --main-welcome-text-color: white;
 
-    --gray: #999999;
-    --beige: #f5f5f1;
+    --current-broker-list-title-color: white; 
+    --future-broker-list-title-color: white; 
 }
 
 html {
     margin: 0;
-    overflow-x: hidden;
-    background-color: #C4D4E0
-}
-
-html.light-theme {
-    --header-bars-odd-color: rgba(8,153,129,1);
-    --header-bars-even-color: rgba(242,54,69,1);
-    --header-title-color: #070419;
-    --header-link-color: rgba(0,0,0,0.6);
-    --header-link-hover-color: black;
-    --header-theme-change-button-color: purple;
-
-    --main-background-color: #e2d51c;
-    --main-welcome-header-color: black;
-    --main-description-color: black;
-    --main-list-title-color: black;
-     --blur-background-color: rgba(255, 255, 255, 0.75); 
-     --background-blur-image: linear-gradient(90deg,#ffffffec 0%,#ffffff1d 90%); 
-
-    --broker-background-color: white;
-    --coinbase-background-color: #004ef1;
-    --interactive-brokers-background-color: black;
-    --kraken-background-color: #5741d9;
-    --blur: 0.3rem;
-
-    --footer-text-color: black;
-
-    --shadow-color: none;
-    --brighter-shadow-color: none;
-    transition: 1000ms;
-
-}
-
-body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-  
-}  
-
-.background-img-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden; 
-    filter: blur(var(--blur));
-    z-index: -1;
-    
-}
-
-.background-img {
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1;
-}
-
-.background-img-filter {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    /* background-color: var(--blur-background-color);   */
-    /* background-image: var(--background-blur-image);   
-    z-index: -1;
-
-}
-
-.header-container {
-    display: grid;
-    grid-template-columns: 200px 1fr 1fr;
-    justify-content: start;
-    align-items: end;
-    position: relative;
-}
-
-input, textarea, button, select {
-    font: inherit;
-}
-
-.logo-bars {
-    width: 110px;
-    height: 80px;
-    display: flex;
-    justify-self: end;
-    align-items: flex-end;
-}
-
-.logo-bar {
-    width: 20px;
-    margin: 0 3px;
-    border-radius: 2px;
-    background-color: var(--header-bars-color);
-    box-shadow: 1px 1px 20px var(--shadow-color);
-    transition: 300ms;
-}
-
-.logo-bar:first-child {
-    height: 25px;
-    animation: logo-bar-one-animation 1s ease-in-out;
-    background-color: var(--header-bars-odd-color);
-}
-
-@keyframes logo-bar-one-animation {
-    0% {
-      height: 0px;
-    }
-
-    50%{
-        height: 60px;
-    }
-  
-    100% {
-      height: 25px;
-    }
-}
-
-.logo-bar:nth-child(2) {
-    height: 45px;
-    animation: logo-bar-two-animation 1s ease-in-out;
-    background-color: var(--header-bars-even-color);
-}
-
-@keyframes logo-bar-two-animation {
-    0% {
-      height: 0px;
-    }
-
-    50% {
-        height: 60px;
-    }
-  
-    100% {
-      height: 45px;
-    }
-}
-
-.logo-bar:nth-child(3) {
-    height: 35px;
-    animation: logo-bar-three-animation 1s ease-in-out;
-    background-color: var(--header-bars-odd-color);
-
-}
-
-@keyframes logo-bar-three-animation {
-    0% {
-      height: 0px;
-    }
-
-    50% {
-        height: 60px;
-    }
-  
-    100% {
-      height: 35px;
-    }
-}
-
-.logo-bar:last-child {
-    height: 55px;
-    animation: logo-bar-four-animation 1s ease-in-out;
-    background-color: var(--header-bars-even-color);
-}
-
-@keyframes logo-bar-four-animation {
-    0% {
-      height: 0px;
-    }
-
-    50% {
-        height: 60px;
-    }
-  
-    100% {
-      height: 55px;
-    }
-}
-
-.logo-title-container {
-    height: 52px;
-    margin-right: 20vw;
-}
-
-.logo-title-container a {
-    text-decoration: none;
-}
-
-#logo-title{
-    margin: 0;
-    font-size: 3rem;
-    font-weight: 500;
-    text-shadow: 1px 1px 20px var(--shadow-color);
-    color: var(--header-title-color);
-    transition: 300ms;
-}
-
-.links-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-.link-list-entry {
-   margin-right: 4vw;
-}
-
-@media (width <= 1180px) and (width > 958px){
-    .header-container {
-        display: grid;
-        grid-template-columns: 150px 1fr 1fr;
-        justify-content: start;
-        align-items: end;
-        position: relative;
-    }
-
-    #sidebar{
-        display: none;
-    }
-
-    .logo-title-container {
-        margin-right: 10vw;
-    }
-
-    .link-list-entry {
-        margin-right: 2vw
-    }
-
-    .future-broker-list div{ /*USE !important to make changes 
-        width: 125px!important;
-    }
-    
-    .current-broker-list div{ /*USE !important to make changes 
-        width: 125px!important;
-    }
-
-    .current-broker-list .broker-list-entry {
-        margin: 0;
-        transition: transform 0.2s;
-    }
-
-    .broker-img {
-        width: 100px!important;
-        height: auto;
-    }
-
-    .current-list-title {
-        font-size: 1rem!important;
-        text-align: center;
-    }
-
-    .list-title {
-        font-size: 1rem!important;
-    }
-    
-  
-}
-
-@media (width <= 958px) and (width > 750px) {
-
-    .header-container {
-        display: grid;
-        grid-template-columns: 125px 1fr 1fr;
-        justify-content: start;
-        align-items: end;
-        position: relative;
-    }
-
-    .logo-title-container {
-        margin-right: 5vw;
-    }
-
-
-    #link-button-div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    #link-button {
-        display: grid;
-        grid-template-columns: 30px;
-        grid-template-rows: 10px 10px 10px;
-        gap: 0px;
-        cursor: pointer;
-        justify-items: center;
-        align-items: center;
-    }
-
-    .hamburger-bar:first-child {
-        justify-self: center;
-        align-self: end;
-        height: 1.5px;
-    }
-
-    .hamburger-bar:nth-child(2) {
-        justify-self: center;
-        align-self: center;
-    }
-
-    .hamburger-bar:last-child {
-        justify-self: center;
-        align-self: start;
-        height: 1.5px;
-    }
-
-    .link-list-entry:not(:last-child){
-        display: none;
-    }
-
-    .link-list-entry:last-child {
-        position: absolute;
-        top: 47px;
-        right: clamp(1vw,15px,20px);
-    }
-
-    #sidebar h1{
-        text-align: center;
-    }
-
-    .link-list-side {
-        list-style: none;
-    }
-
-    .header-link-side {
-        color: white;
-        text-decoration: none;
-    }
-
-    #sidebar {
-        background-color: black;
-        overflow-y: scroll;
-        overscroll-behavior: contain;
-        height: 100vh;
-        width: max(200px, 25vw);
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        translate: -200px;
-        transition: translate 300ms;
-        z-index: 100;
-    }
-    
-    #sidebar.opened {
-        translate: 0px;
-    }
-
-    .future-broker-list div{ /*USE !important to make changes 
-        width: 100px!important;
-    }
-    
-    .current-broker-list div{ /*USE !important to make changes 
-        width: 100px!important;
-    }
-
-    .broker-img {
-        width: 80px!important;
-        height: auto;
-    }
-
-    .current-list-title {
-        font-size: 0.8rem!important;
-    }
-    
-    .list-title {
-        font-size: 0.8rem!important;
-    }
-
-}
-
-@media (width <= 750px) {
-    .main-container {
-        grid-template-columns: 1fr!important;
-        margin-top: 100px;
-        margin-left: 10px;
-    }
-
-    .text-container{
-        grid-column: 1 / 2!important;
-    }
-
-    .header-container {
-        display: grid;
-        grid-template-columns: 125px 1fr 1fr;
-        justify-content: start;
-        align-items: end;
-        position: relative;
-    }
-
-    .logo-title-container {
-        margin-right: 5vw;
-    }
-
-
-    #link-button-div {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    #link-button {
-        display: grid;
-        grid-template-columns: 30px;
-        grid-template-rows: 10px 10px 10px;
-        gap: 0px;
-        cursor: pointer;
-        justify-items: center;
-        align-items: center;
-    }
-
-    .hamburger-bar:first-child {
-        justify-self: center;
-        align-self: end;
-        height: 1.5px;
-    }
-
-    .hamburger-bar:nth-child(2) {
-        justify-self: center;
-        align-self: center;
-    }
-
-    .hamburger-bar:last-child {
-        justify-self: center;
-        align-self: start;
-        height: 1.5px;
-    }
-
-    .link-list-entry:not(:last-child){
-        display: none;
-    }
-
-    .link-list-entry:last-child {
-        position: absolute;
-        top: 47px;
-        right: clamp(1vw,15px,20px);
-    }
-
-    #sidebar h1{
-        text-align: center;
-    }
-
-    .link-list-side {
-        list-style: none;
-    }
-
-    .header-link-side {
-        color: white;
-        text-decoration: none;
-    }
-
-    #sidebar {
-        background-color: black;
-        overflow-y: scroll;
-        overscroll-behavior: contain;
-        height: 100vh;
-        width: max(200px, 25vw);
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        translate: -200px;
-        transition: translate 300ms;
-        z-index: 100;
-    }
-    
-    #sidebar.opened {
-        translate: 0px;
-    }
-
-    .future-broker-list {
-        gap: 5px!important;
-    }
-
-    .future-broker-list div{ /*USE !important to make changes 
-        width: 120px!important;
-    }
-    
-    .current-broker-list div{ /*USE !important to make changes 
-        width: 120px!important;
-    }
-
-    .broker-img {
-        width: 100px!important;
-        height: auto;
-    }
-
-    .current-list-title {
-        font-size: 1rem!important;
-        padding-right: 25px;
-    }
-    
-    .list-title {
-        font-size: 1rem!important;
-        padding-right: 65px;
-    }
-
-    .footer-container {
-        text-align: center;
-        color: var(--footer-text-color);
-        transition: 300ms;
-        margin-top: 40%;
-    }
-    
-    #webhook-count {
-        font-size: 1rem;
-        font-weight: 400;
-    }
-    
-    #contact-message {
-        font-size: 1rem;
-        font-weight: 400;
-    }
-    
-}
-
-.header-link {
-    text-decoration: none;
-    color: var(--header-link-color);
-    text-shadow: 1px 1px 50px var(--brighter-shadow-color);
-    transition: color 300ms
-}
-
-.header-link:hover {
-    color: var(--header-link-hover-color);
-}
-
-.header-link h2 {
-    margin: 0;
-    font-weight: 400;
-    transition: scale 300ms;
-}
-
-.header-link h2:hover {
-    scale: 1.1;
-}
-
-.disabled {
-    display: none;
-}
-
-.btn {
-    all: unset;
-    outline: revert;
-    box-sizing: border-box;
-    display: inline-block;
-    cursor: pointer;
-    position: relative;
-}
-
-.svgs {
-    position: absolute;
-    top: -14px;
-    fill: var(--header-link-hover-color);
-    transition: 300ms
-}
-
-.svgs:hover {
-    scale: 1.1;
-}
-
-#link-button {
-    border-radius: 50%;
-    border: solid 1px rgba(0,0,0,0.25);
-    box-shadow: 0 0 20px 0px #2e2e2e3a;
-    transition: 300ms;
-    background: var(--broker-background-color);
-    color: var(--header-link-hover-color);
-}
-
-.hamburger-bar {
-    background-color: black;/*var(--footer-text-color);
-    width: 15px;
-    height: 2px;
-}
-
-.main-container {
-    display: grid;
-    grid-template-columns: 200px 1fr 1.5fr;
-    width: 100vw;
-    height: 75vh;
-}
-
-.text-container {
-    grid-column: 2 / 3 ;
-    align-self: center;
-    color: var(--main-welcome-header-color);
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);/*rgba(150,150,150,0.75);
-}
-
-#welcome-text {
-    line-height: 1.5;
-    font-weight: 500;
-    transition: 300ms;
-    font-size: clamp(1rem,1rem + 2vw,2rem);
-}
-
-#description-text {
-    color: var(--main-description-color);
-    line-height: 1.5;
-    font-weight: 400;
-    transition: 300ms;
-    font-size: clamp(0.75rem,0.5rem + 3vw,1.5rem);
-}
-
-.main-container nav {
-    justify-self: center;
-    color: var(--main-list-title-color);
-    font-weight: 400;
-    text-shadow: 1px 1px 40px var(--brighter-shadow-color);
-    margin-top: -10px;
-    transition: 300ms;
-}
-
-.current-broker-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 70px 70px;
-    gap: 10px;
-    
-}
-
-.current-broker-list div:first-of-type {
-    grid-row: 2 / 3;
-    grid-column: 2 / 3;
-}
-
-.current-list-title {
-    font-size: 1.25rem;
-    grid-column: 2 / 3;
-    justify-self: center;
-    align-self: center;
-    text-align: center;
-    
-}
-
-.current-broker-list div {
-    width: 200px;
-    height: 100px;
-    background-color: var(--broker-background-color); 
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 100px;
-    align-items: center;
-    justify-items: center;
-    border: solid 1px rgba(0,0,0,0.25);
-    box-shadow: 1px 1px 1px gray;
-    border-radius: 2%;
-}
-
-.future-broker-list {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(3,100px);
-    grid-template-areas: "list-title list-title list-title";
-    gap: 10px;
-}
-
-.broker-list-entry {
-    margin: 0;
-    transition: transform 0.2s;
-}
-
-.broker-list-entry:focus {
-    outline: none;
-}
-  
-.broker-list-entry:hover {
-    transform: scale(1.1);
-}
-
-.future-broker-list div {
-    width: 200px;
-    height: 100px;
-    background-color: var(--broker-background-color); 
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 100px;
-    align-items: center;
-    justify-items: center;
-    border: solid 1px rgba(0,0,0,0.25);
-    box-shadow: 1px 1px 1px gray;
-    border-radius: 2%;
-}
-
-.broker-img {
-    width: 175px;
-    height: auto;
-    position: relative;   
-}
-
-.list-title {
-    font-size: 1.25rem;
-    grid-area: list-title;
-    justify-self: center;
-    align-self: center;
-}
-
-.future-broker-list div:first-of-type {
-    grid-row: 3 / 4;
-    grid-column: 2/3;
-}
-
-.future-broker-list div:nth-child(5) {
-    grid-column: 1 / 2;
-    grid-row: 2 / 3;
-    background-color: var(--coinbase-background-color);
-    transition: background-color 300ms;
-}
-
- .future-broker-list div:nth-child(2) { 
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
-    background-color: var(--interactive-brokers-background-color);
-    transition: background-color 300ms; 
-} 
-
-.future-broker-list div:last-child { 
-    grid-column: 2 / 3;
-    grid-row: 3 / 4;
-    background-color: var(--kraken-background-color);
-    transition: background-color 300ms; 
-} 
-
-.footer-container {
-    text-align: center;
-    color: var(--footer-text-color);
-    transition: 300ms;
-}
-
-#webhook-count {
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-#contact-message {
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-*/
-
-* {
-    box-sizing: border-box;
-}
-
-:root {
-    --text-color: black;
-}
-
-html {
-    margin: 0;
-    background-color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     overflow-x: hidden; 
 }
+
+.background-color {
+    z-index: -10;
+    position: absolute;
+    border-bottom: 1px solid black;
+}
+
+.background-color-1 {
+    top: 0%;
+    left: 0%;
+    width: 45vw;
+    height: 100%;
+    background-color: var(--background-color-1);
+}
+
+.background-color-2 {
+    top: 0;
+    left: 45vw;
+    width: 7vw;
+    height: 100%;
+    background-color: var(--background-color-2);
+}
+
+.background-color-3 { 
+    top: 0dvh; 
+    left: 52vw;
+    width: 37vw;
+    height: 100%;
+    background-color: var(--background-color-3);
+    
+}
+
+.background-color-4 { 
+    top: 0;
+    left: 89vw;
+    width: 11vw;
+    height: 100%;
+    background-color: var(--background-color-4);
+}
+
 
 body {
     margin: 0;
@@ -855,18 +123,34 @@ body {
 
 .header-container {
     width: 100%;
-    height: 100px;
-    background-color: beige;
+    height: 80px;
+    background-color: var(--header-background-color); 
     display: grid;
     grid-template-columns: 100px 1fr 1fr 100px;
     align-items: center;
     position: fixed;
+    z-index: 1;
+    border-bottom: 1px solid rgba(0,0,0,0.45);
+}
+
+.logo-title-container {
+    width: 300px;
+    background-color: transparent;
+    grid-column: 1 / 3;
 }
 
 #logo-title {
-    color: var(--text-color);
-    font-size: 2.5rem;
-    font-weight: 500;
+    color: var(--header-text-color);
+    font-size: 3rem;
+    font-weight: 600;
+    position: absolute;
+    bottom: -20px;
+    left: 6.25vw;
+    padding-left: 57.5px; 
+    background-image: url('LogoBars.PNG');
+    background-size: 97px; 
+    background-repeat: no-repeat; 
+    background-position: left -20px bottom -22px;
 }
 
 .links-list {
@@ -875,6 +159,10 @@ body {
     margin: 0;
     display: flex;
     justify-content: center;
+    position: absolute;
+    top: 5px;
+    left: 54.5vw;
+    left: 54.5dvw;
 }
 
 .link-list-entry {
@@ -882,9 +170,15 @@ body {
 }
 
 .link-list-entry a h2 {
-    color: var(--text-color);
+    color: var(--link-text-color);
     font-size: 1.5rem;
     font-weight: 400;
+    transition: all 300ms;
+}
+
+.link-list-entry a h2:hover {
+    color: #6593c7;
+    scale: 1.1;
 }
 
 a {
@@ -892,29 +186,38 @@ a {
 }
 
 .main-container {
-    color: var(--text-color);
     display: grid;
-    grid-template-columns: 100px 1fr 1fr 100px;
-    grid-template-rows: calc(100vh) 1fr;
-    grid-template-rows: calc(100dvh) 1fr;
+    grid-template-columns: 5vw 1fr 1fr 5vw;
+    grid-template-rows: 100vh;
     align-items: center;
 }
 
 .text-container {
-    grid-column: 2/3;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin-top: 15vh;
 }
 
 #welcome-text {
     font-weight: 500;
-    font-size: 2.75rem;
+    font-size: calc(1.75vw + 2.25vh); 
     line-height: 1.5;
+    color: var(--main-welcome-text-color);
 }
 
 #description-text {
-    font-size: 1.375rem;
+    font-size: calc(1.2vw + 0.7vh); 
     line-height: 1.5;
     font-weight: 400;
     transition: 300ms;
+    width: 40vw;
+    color: var(--main-welcome-text-color);
+}
+
+.additional-text-container {
+    margin-top: 8vh;
+    position: relative;
+    right: 20px;
 }
 
 .additional-text-list {
@@ -922,71 +225,95 @@ a {
 }
 
 .additional-text-entry h3{
+    color: white;
     line-height: 1.5;
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: calc(1vw + 1vh); 
+    font-weight: 300;
     font-style: italic;
-    margin-block: 50px;
+    margin-block: 3vh;
+    padding-left: 2.35vw; 
+    background-image: url('newListStyle.PNG');
+    background-size: 2.5vw; 
+    background-repeat: no-repeat; 
+    background-position: left 0px bottom -0.7vh;
 }
 
-.main-container nav {
-    grid-row: 2/3;
-    grid-column: 2/4;
+.broker-nav {
+    grid-row: 1/2;
+    grid-column: 3/4;
     display: grid;
     grid-template-columns: 1fr;
+    position: relative;
+    right: 40px;
+    top: 3vh;
 }
 
-.main-container nav .current-broker-list {
+.broker-nav .current-broker-list {
     justify-self: center;
 }
 
 .current-broker-list {
     list-style-type: none;
     display: grid;
-    grid-template-columns: 400px 15px;
-    grid-template-rows: 50px 150px;
+    grid-template-columns: 15vw;
+    grid-template-rows: 50px 15vh;
     align-items: center;
     justify-items: center;
     column-gap: 10px;
 }
 
 .current-broker-list div {
-    width: 400px;
-    height: 150px;
-    background-color: var(--broker-background-color); 
+    width: 15vw;
+    height: 15vh;
+    background-color: white;
     display: grid;
-    grid-template-columns: 400px;
-    grid-template-rows: 150px;
+    grid-template-columns: 15vw;
+    grid-template-rows: 15vh;
     align-items: center;
     justify-items: center;
     border: solid 1px rgba(0,0,0,0.25);
     box-shadow: 1px 1px 1px gray;
     border-radius: 2%;
     grid-row: 2 / 3;
+    transition: all 300ms;
+}
+
+.current-broker-list div:hover {
+    scale: 1.1;
 }
 
 .future-broker-list {
     list-style-type: none;
     display: grid;
-    grid-template-columns: 400px 400px 400px;
-    grid-template-rows: 50px 150px 150px;
+    grid-template-columns: 15vw 15vw;
+    grid-template-rows: 50px 15vh 15vh 15vh;
     align-items: center;
     justify-items: center;
-    column-gap: 30px;
+    column-gap: 20px;
     row-gap: 10px;
+    background-color: var(--text-background-color);
+    justify-self: center;
+    margin: 0;
+}
+
+.current-list-title {
+    color: var(--current-broker-list-title-color);
+    font-size: calc(0.7vw + 1.25vh);
 }
 
 .list-title {
-    grid-column: 2/3;
+    grid-column: 1 / 3;
+    font-size: calc(0.7vw + 1.25vh);
+    color: var(--future-broker-list-title-color)
 }
 
 .future-broker-list div:first-of-type {
-    grid-row: 3 / 4;
-    grid-column: 2 / 3;
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
 }
 
 .future-broker-list div:nth-child(3) { 
-    grid-column: 3 / 4;
+    grid-column: 2 / 3;
     grid-row: 3 / 4;
 } 
 
@@ -996,8 +323,8 @@ a {
 } 
 
 .future-broker-list div:nth-child(5) { 
-    grid-column: 3 / 4;
-    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
 }
 
 .future-broker-list div:nth-child(6) { 
@@ -1011,39 +338,490 @@ a {
 } 
 
 .broker-img {
-    width: 20dvw;
+    width: 12vw;
     height: auto;
 }
 
 .future-broker-list div {
-    width: 400px;
-    height: 150px;
-    background-color: var(--broker-background-color); 
+    width: 15vw;
+    height: 15vh;
+    background-color: white; 
     display: grid;
-    grid-template-columns: 400px;
-    grid-template-rows: 150px;
+    grid-template-columns: 15vw;
+    grid-template-rows: 15vh;
     align-items: center;
     justify-items: center;
     border: solid 1px rgba(0,0,0,0.25);
     box-shadow: 1px 1px 1px gray;
     border-radius: 2%;
+    transition: all 300ms;
 }
 
-.footer-container {
+.future-broker-list div:hover {
+    scale: 1.1;
+}
+
+.contacts-div {
+    position: absolute;
+    bottom: 50px;
+    left: 1365px;
+    display: grid;
+    grid-template-columns: 2.9vw 2.9vw 2.9vw;
+    padding-left: 20px;
+}
+
+.contact {
+    transition: all 300ms;
+}
+
+.contact:hover {
+    scale: 1.1;
+}
+
+.google-logo {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    justify-content: center;
+}
+
+.linkedin-logo {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}
+
+.github-logo {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    justify-content: center;
+}
+
+.footer-button {
+    max-width: 7.5vw;
+    display: flex; 
+    justify-items: start;
+    align-items: center; 
+    padding: 0.5rem 1.4rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
     text-align: center;
-    color: var(--footer-text-color);
-    transition: 300ms;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    gap: 0.75rem;
+    color: rgb(65, 63, 63);
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .6s ease;
+    justify-self: center;
 }
 
-#webhook-count {
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--text-color);
+.footer-button svg {
+    transition: all 0.6s ease;
+    height: 24px;
 }
 
-#contact-message {
-    font-size: 1rem;
-    font-weight: 400;
-    color: var(--text-color);
+.footer-button:hover {
+    transition: all 0.6s ease;
+    transform: scale(1.12);
 }
 
+.footer-button::after {
+    content: ""; 
+    position: absolute;
+    top: 50%;
+    left: calc(3rem);
+    transform: translateY(-50%);
+    background-color: var(--background-color-4);
+    color: black;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    display: none;
+    transition: all 0.6s ease;
+}
+
+.footer-button:hover::after {
+    display: block; 
+    transition: all 0.6s ease;
+}
+
+.socail-media {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.socail-media  {
+  width: 2.3vw;
+  height: 2.3vw;
+  background-color: #0b65c2;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  z-index: 9;
+  border: 1px solid #0b65c2;
+  border-radius: 4px;
+  transition: all 400ms;
+}
+
+.socail-media:hover {
+    scale: 1.1;
+}
+
+.socail-media svg {
+  width: 1.5vw;
+  height: 1.5vw;
+  -o-object-fit: contain;
+  object-fit: contain;
+  filter: invert(100%) sepia(0%) saturate(7455%) hue-rotate(57deg) brightness(108%) contrast(105%);
+} 
+
+.Link {
+    border-radius: 50%;
+    width: 2.3vw;
+    height: 2.3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: .4s;
+    cursor: pointer;
+    position: relative;
+    background-color: rgb(31, 31, 31);
+    overflow: hidden;
+    text-decoration: none;
+    justify-self: center;
+    align-self: center;
+}
+
+.svgIcon {
+    width: 1.6vw;
+    height: 1.6vw
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.text {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  width: 12px;
+  font-weight: 600;
+  opacity: 0;
+  transition-duration: .4s;
+}
+
+@media (width < 1000px) and (width > 750px) {
+
+    .additional-text-container {
+        right: 40px;
+    }
+    
+    .additional-text-entry h3{
+        background-position: left 0px bottom -0.3vh;
+    }
+
+}
+
+@media (width < 950px) and (width > 750px) {
+
+    #logo-title {
+        padding-right: 20px;
+    }
+
+    .links-list {
+        padding-left: 20px;
+        left: 50vw;
+        left: 50dvw;
+    }
+
+    .link-list-entry {
+        margin-right: 2.5vw;
+    }
+
+} 
+
+@media (width < 872px) and (width > 750px) {
+
+    
+    .current-list-title {
+        text-align: center;
+    }
+}
+
+@media (width < 785px) {
+
+    .links-list {
+        padding-left: 20px;
+        left: 45vw;
+        left: 45dvw;
+    }
+
+    .link-list-entry {
+        margin-right: 2vw;
+    }
+    
+    #logo-title {
+        font-size: 3rem;
+        bottom: -20px;
+        left: 1vw;
+        padding-left: 57.5px; 
+        background-size: 97px; 
+        background-position: left -20px bottom -22px;
+    }
+}
+
+@media (width < 750px) {
+
+    .background-color {
+        border-bottom: 1px solid black;
+    }
+    
+    .background-color-1 {
+        left: 0;
+        width: 350px;
+    }
+    
+    .background-color-2 {
+        left: 350px;
+        width: 40px;
+    }
+    
+    .background-color-3 {  
+        left: 390px;
+        width: 280px;
+    }
+    
+    .background-color-4 { 
+        left: 655px;
+        width: 110px;
+    }
+
+    .main-container {
+        grid-template-columns: 5vw 330px 350px 5vw;
+    }
+
+    .text-container {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        margin-top: 15vh;
+    }
+
+    #welcome-text {
+        font-size: 1.625rem;
+        line-height: 1.5;
+    }
+
+    #description-text {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        width: 300px;
+    }
+
+    .additional-text-container {
+        right: 20px;
+    }
+
+    .additional-text-entry h3{
+        line-height: 1.5;
+        font-size: 0.8rem!important;
+        padding-left: 22px!important; 
+        background-image: url('newListStyle.PNG');
+        background-size: 25px!important; 
+        background-position: left 0px bottom -4px!important;
+    }
+
+    .broker-nav {
+        grid-template-columns: 1fr;
+        right: 40px;
+    }
+
+    .current-broker-list {
+        grid-template-columns: 113.4px;
+        column-gap: 10px;
+    }
+
+    .current-broker-list div {
+        width: 113.4px;
+        height: auto;
+        grid-template-columns: 113.4px;
+    }
+
+    .future-broker-list {
+        grid-template-columns: 113.4px 113.4px;
+        grid-template-rows: 50px 15vh 15vh 15vh;
+        column-gap: 10px;
+        row-gap: 10px;
+        margin: 0;
+    }
+
+    .current-list-title {
+        font-size: 0.7rem;
+    }
+
+    .list-title {
+        font-size: 0.7rem;
+    }
+
+    .broker-img {
+        width: 100px;
+    }
+
+    .future-broker-list div {
+        width: 113.4px;
+        height: auto;
+        grid-template-columns: 113.4px;
+        grid-template-rows: 15vh;
+    }
+
+    .future-broker-list div:hover {
+        scale: 1.1;
+    }
+
+    .footer-button {
+        max-width: 62px;
+    }
+
+    .socail-media {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        gap: 20px;
+        list-style: none;
+    }
+
+    .socail-media  {
+      width: 20px;
+      height: 20px;
+    }
+
+    .socail-media svg {
+      width: 12.5px;
+      height: 12.5px;
+    } 
+
+    .Link {
+        width: 20px;
+        height: 20px;
+    }
+
+    .svgIcon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .additional-text-container {
+        right: 50px;
+    }
+
+}
+
+@media (width < 675px) {
+    .links-list {
+        padding-left: 20px;
+        left: 300px;
+    }
+}
+
+@media (height < 580px) {
+
+    .broker-nav  {
+        top: 5vh;
+    }
+    
+    .current-broker-list {
+        grid-template-rows: 30px 15vh;
+    }
+    
+    .current-broker-list div {
+        width: 15vw;
+        height: 15vh;
+        grid-template-columns: 15vw;
+        grid-template-rows: 15vh;
+    }
+    
+    .future-broker-list {
+        grid-template-columns: 15vw 15vw;
+        grid-template-rows: 30px 15vh 15vh 15vh;
+        row-gap: 10px;
+    }
+    
+    .current-list-title {
+        font-size: calc(0.7vw + 1.25vh);
+    }
+    
+    .list-title {
+        font-size: calc(0.7vw + 1.25vh);
+    }
+    
+    .broker-img {
+        width: 12vw;
+        height: auto;
+    }
+    
+    .future-broker-list div {
+        width: 15vw;
+        height: 15vh;
+        grid-template-columns: 15vw;
+        grid-template-rows: 15vh;
+    }
+}
+
+@media (height < 475px) {
+
+    .broker-nav {
+        top: 6vh;
+    }
+    
+    .current-broker-list {
+        grid-template-rows: 30px 15vh;
+    }
+    
+    .current-broker-list div {
+        width: 15vw;
+        height: 15vh;
+        grid-template-columns: 15vw;
+        grid-template-rows: 15vh;
+    }
+    
+    .future-broker-list {
+        grid-template-columns: 15vw 15vw;
+        grid-template-rows: 30px 15vh 15vh 15vh;
+        row-gap: 10px;
+    }
+    
+    .current-list-title {
+        font-size: calc(0.7vw + 1.25vh);
+    }
+    
+    .list-title {
+        font-size: calc(0.7vw + 1.25vh);
+    }
+    
+    .broker-img {
+        width: 12vw;
+        height: auto;
+    }
+    
+    .future-broker-list div {
+        width: 15vw;
+        height: 15vh;
+        grid-template-columns: 15vw;
+        grid-template-rows: 15vh;
+    }
+
+}

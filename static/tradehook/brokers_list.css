@@ -2,123 +2,115 @@
     box-sizing: border-box;
 }
 
-html {
-    margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-:root {
-    --header-bars-odd-color: rgba(8,153,129,1);
-    --header-bars-even-color: rgba(242,54,69,1);
-    --header-title-color: white;
-    --header-link-color: rgba(255,255,255,0.6);
-    --header-link-hover-color: black;
-    --header-theme-change-button-color: purple;
-
-    --login-welcome-color: black;
-    --login-form-text-color: black;
-    --login-form-background-color: white;
-    --login-form-border-color-active: black;
-    --login-form-register-color: rgba(0,0,0,0.7);
-    --login-form-register-hover-color: rgba(0,0,0,1);
-    --login-form-login-button-color: black;
-    --login-form-login-button-background-color: white;
-
-    --button-text-color: white;
-    --button-background-color: rgba(0,0,0,0.75);
-    --button-hover-background-color: rgba(0,0,0,0.9);
-    --button-active-background-color: rgba(0,0,0,1);
-
-    --list-text-color: white;
-    
-
-    --footer-text-color: black;
-
-    transition: 1000ms;
-}
-
-html.light-theme {
-    --login-welcome-color: black;
-    --login-form-text-color: black;
-    --login-form-background-color: white;
-    --login-form-border-color-active: black;
-    --login-form-register-color: rgba(0,0,0,.7);
-    --login-form-register-hover-color: rgba(0,0,0,1);
-    --login-form-login-button-color: black;
-    --login-form-login-button-background-color: black;
-
-    --button-text-color: white;
-    --button-background-color: rgba(0,0,0,0.5);
-    --button-hover-background-color: rgba(0,0,0,0.75);
-    --button-active-background-color: rgba(0,0,0,1);
-
-    --list-text-color: black;
-}
-
-main {
-    display: grid;
-    grid-template-columns: 100px 1fr 100px;
-    align-content: center;
-    justify-items: center;
-    margin-top: 20px;
+.main-container {
+    grid-template-columns: 300px 1fr 300px;
+    align-items:start;
 }
 
 .brokers-container {
+    margin-top: 100px;
     grid-column: 2 / 3;
-    max-width: 960px;
+    max-width: 900px;
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    justify-content: center;
+    justify-items: center;
+    color: var(--background-color-1);
+    background-color: white;
+    border-radius: 5px;
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 2px gray;
 }
 
 .brokers-list {
     list-style: none;
-    
-}
-
-.brokers-container h2 {
-    font-weight: 500;
-    color: var(--list-text-color);
-    transition: 300ms;
-    font-size: 1.75rem;
 }
 
 .brokers-list-entry {
-    transform: unset;
-    color: var(--list-text-color);
-    transition: 300ms;
+    width: 800px;
+    border-bottom: solid 1px rgba(0,0,0,0.25);
+    padding-inline: 40px;
+    margin-bottom: 20px;
     font-size: 1.125rem;
-    line-height: 1.5;
-    
+}
+
+button {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 button {
     padding: 12.5px 30px;
     border: 0;
     border-radius: 100px;
-    background-color: var(--button-background-color);
-    color: var(--button-text-color);
+    background-color: var(--background-color-1);
+    color: var(--background-color-4);
     font-weight: Bold;
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     cursor: pointer;
     border: solid 1px rgba(0,0,0,0.25);
     position: relative;
-    margin-top: 10px;
-    margin-bottom: 30px;
+   
 }
   
 button:hover {
-    background-color: var(--button-hover-background-color);
+    background-color: var(--background-color-3);
     transform: scale(1.1);
 }
   
 button:active {
-    background-color: var(--button-active-background-color);
+    background-color: var(--background-color-2);
     transition: all 0.25s;
     -webkit-transition: all 0.25s;
     box-shadow: none;
     transform: scale(0.98);
 }
 
-.add-broker-link {
+.brokers-container a {
     text-decoration: none;
-    color: var(--button-text-color);
+    color: white;
+}
+
+.brokers-container h2 {
+    border-bottom: solid 2px var(--background-color-1);
+    padding-bottom: 30px;
+}
+
+.background-color {
+    z-index: -10;
+    position: absolute;
+    border-bottom: 1px solid black;
+}
+
+.background-color-1 {
+    top: 0%;
+    left: 0%;
+    width: 45vw;
+    height: 100dvh;
+    background-color: var(--background-color-1);
+}
+
+.background-color-2 {
+    top: 0;
+    left: 45vw;
+    width: 7vw;
+    height: 100dvh;
+    background-color: var(--background-color-2);
+}
+
+.background-color-3 { 
+    top: 0dvh; 
+    left: 52vw;
+    width: 37vw;
+    height: 100dvh;
+    background-color: var(--background-color-3);
+}
+
+.background-color-4 { 
+    top: 0;
+    left: 89vw;
+    width: 11vw;
+    height: 100dvh;
+    background-color: var(--background-color-4);
 }
