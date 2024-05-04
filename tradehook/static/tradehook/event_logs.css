@@ -1,154 +1,295 @@
-/* Reset some default browser styles */
-body, h1, table, th, td {
+
+* {
+    box-sizing: border-box;
+}
+
+html {
     margin: 0;
-    padding: 0;
 }
 
-/* Set a background color and font for the entire page */
-body {
-    background-color: #0d2033;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
+:root {
+
+    --background-color-1: #202c43;
+    --background-color-2: #2e3f5f;
+    --background-color-3: #6593c7;
+    --background-color-4: #adc4d8;
+
+    --sidebar-background-color: #e2f1ff;
+    --sidebar-text-color: var(--background-color-1);
+    --sidebar-text-hover-color: var(--background-color-3);
+
+    --main-content-background-color: var(--background-color-2);
+    --main-content-text-color: #ffffff;
+
+    --header-background-color: white;
+    --header-text-color: var(--background-color-1);
+    --link-text-color: var(--background-color-1);
+    --link-text-color-hover: #131b2a;
 }
 
-.logo {
-    margin: 0px;
-    position: absolute;
-    right: 36.8%;
-    width: 400px;
-    height: auto;
-    bottom: 63%;
-
+.main-container {
+    background-color: transparent;
+    grid-template-columns: 250px 300px 1fr 100px!important;
 }
 
-.whole{
-    position: absolute;
-    top: 220px;
+.background-color {
+    z-index: -1;
+    position: fixed;
+    border-bottom: 1px solid black;
 }
 
-/* Style the page title */
-h1 {
-    text-align: center;
-    font-size: 32px;
-    color: #c5a43c;;
-    margin-top: 20px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    position: relative;
-    top: 20px;
+.background-color-1 {
+    top: 0%;
+    left: 0%;
+    width: 33.7vw;
+    height: 100%;
+    background-color: var(--background-color-1);
 }
 
-.apilink {
-    width: 200px;
+.background-color-2 {
+    top: 0;
+    left: 33.7vw;
+    width: 66.5vw;
+    height: 100%!important;
+    background-color: var(--background-color-3);
 }
 
-.eventloglink {
-    width: 200px;
+.background-color-3 { 
+    top: 0dvh; 
+    left: 96.2vw;
+    width: 37vw;
+    height: 100%!important;
+    background-color: var(--background-color-2);
 }
 
-.setuplink {
-    width: 200px;
+.background-color-4 { 
+    top: 0;
+    left: 0vw;
+    width: 0vw;
+    height: 100%!important;
+    background-color: var(--background-color-4);
 }
 
-/* Style the navigation links */
-.home-button {
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: #c5a43c;
-    text-decoration: none;
-    border: 2px solid #c5a43c;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    position: absolute;
-    top: -185px;
-    left: 20px;
+.links-list {
+    left: 48.5vw;
+    left: 48.5dvw;
 }
 
-.home-button:hover {
-    background-color: #c5a43c;
-    color: #0d2033;
+.checkboxes-container {
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 290px 300px;
+    margin-top: 90px;
+    align-items: end;
+    align-self: center;
+    justify-self: center;
+    position: fixed;
+    left: 270px;
+    top: 40px;
 }
 
-.heading-container {
-    border: none;
-    text-align: center;
-    margin: 20px 20px;
-    position: absolute;
-    bottom: 325px;
-    right: 32px;
-    display: flex;
-    justify-content: space-evenly; /* Adjust this property to control the spacing */
-    text-align: center;
-}
-
-.heading-container h1 {
-     /* Display headers horizontally */
-    margin: 10px 0px; /* Optional: Add spacing between headers */
-}
-
-.heading-container h1 a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    text-decoration: none;
-    display: inline-block;
-    margin: 0 20px;
-    padding-left: 100px;
-    position: relative;
-    top: -150px;
-    color: #eadb80;
-    font-size: 30px;
-    transition: color 0.3s;
-    
-}
-
-.heading-container h1 a:hover {
-    color: #c5a43c
-}
-
-
-
-/* Style the table */
-table {
-    border-collapse: collapse;
-    width: 80%;
-    margin: 20px auto;
-    background-color: #0d2033;
-    color:#eadb80;
-    position: relative;
-    top: 20px;
-  
-    
-}
-
-/* Style the table header */
-th {
-    background-color: #0d2033;
-    color: #eadb80;
-    font-weight: bold;
+#left-filter-container {
+    display: grid;
+    grid-template-rows: repeat(10,20px);
+    gap: 5px;
+    margin-bottom: 20px;
+    background-color: rgb(255, 255, 255);
     padding: 10px;
-    text-align: left;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
+    border-radius: 5px;
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 2px gray;
+    color: var(--background-color-1);
 }
 
-/* Style the table rows */
-tr:nth-child(even) {
-    background-color: #0d2033;
+.left-filter-title-container {
+    margin-block: -5px ;
+    color: var(--login-form-login-button-background-color);
 }
 
-/* Style the table data cells */
-td, th {
-    padding: 8px;
-    border: 1px solid #c5a43c;
-    
+.right-filter-title-container {
+    margin-block: -5px ;
+    color: var(--login-form-login-button-background-color);
 }
 
-/* Style the table responsive on smaller screens */
-@media (max-width: 600px) {
-    table {
-        width: 100%;
+#right-filter-container {
+    display: grid;
+    grid-template-rows: repeat(10,20px);
+    gap: 5px;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 2px gray;
+    color: var(--background-color-1);
+}
+
+.checkbox-container {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 1.125rem;
+    user-select: none;
+}
+
+.custom-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: var(--background-color-4);
+  border-radius: 4px;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid var(--background-color-1);
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.custom-checkbox:checked ~ .checkmark {
+  background-color: var(--background-color-4);
+  box-shadow: 0 3px 7px rgba(33, 150, 243, 0.3);
+}
+
+.custom-checkbox:checked ~ .checkmark:after {
+  display: block;
+}
+  
+@keyframes checkAnim {
+    0% {
+      height: 0;
+    }
+  
+    100% {
+      height: 10px;
+    }
+}
+  
+  .custom-checkbox:checked ~ .checkmark:after {
+    animation: checkAnim 0.2s forwards;
+}
+
+button {
+    padding: 12.5px 30px;
+    border: 0;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: var(--background-color-1);
+    color: white;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    cursor: pointer;
+    border: solid 1px rgba(0,0,0,0.25);
+    position: relative;
+    margin-inline: 2.5px;
+}
+  
+
+button:hover {
+    background-color: var(--background-color-4);
+}
+  
+button:active {
+    background-color: var(--background-color-3);
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    box-shadow: none;
+    transform: scale(0.98);
+}
+
+.table-container {
+    width: 60vw;
+    position: absolute;
+    left: 535px;
+    top: 70px;
+}
+
+.event-log-title{
+    grid-column: 2 / 3;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 50px;
+    font-size: 2rem;
+    color: white;
+}
+
+.table {
+    border-collapse: collapse;
+    border-radius: 5px;
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 2px gray;
+}
+  
+.table-column-header,
+.table-data {
+    padding: 10px; 
+    border: 2px solid var(--background-color-1);
+    background-color: white;
+    border-radius: 1px;
+}
+
+.table-column-header {
+    border: solid 3px var(--background-color-1);
+    border-radius: 1px;
+    margin-inline: 10px;
+    font-weight: 500;
+    color: var(--background-color-1);
+}
+
+.table-data {
+    color: var(--background-color-1);
+}
+
+.left-key-class {
+    font-size: calc(0.6vw + 1.15vh);
+}
+
+.left-key-class:not(:last-of-type) {
+    padding-bottom: 20px;
+}
+
+.right-key-class {
+    font-size: calc(0.6vw + 1.15vh);
+    padding-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (width < 1300px) {
+
+    html {
+        overflow-x: scroll;
+    }
+}
+
+@media (width < 600px) {
+    .links-list {
+        padding-left: 20px;
+        left: 300px;
     }
 }

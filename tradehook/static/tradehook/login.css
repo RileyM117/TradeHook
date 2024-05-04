@@ -1,128 +1,260 @@
-body {
-    background-color: #0d2033;;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    color:#c5a43c;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
+* {
+    box-sizing: border-box;
 }
 
-.logo {
-    margin: -70px auto;
-    position: relative;
-    right: 0;
-    display: block;
-    width: 400px;
-    height: auto;
+:root {
 
+    --background-color-1: #202c43;
+    --background-color-2: #2e3f5f;
+    --background-color-3: #6593c7;
+    --background-color-4: #adc4d8;
+
+    --header-background-color: white;
+    --header-text-color: var(--background-color-1);
+    --link-text-color: var(--background-color-1);
+    --link-text-color-hover: #131b2a;
+}
+
+html {
+    margin: 0;
+    overflow-y: hidden;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.welcome-back-text-div {
+    color: var(--background-color-1);
+    text-align: center;
 }
 
 h2 {
-    font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    font-size: 30px;
-    text-align: center;
-    color: #c5a43c;
+}
+
+h3 {
+    font-weight: 400;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: 80vh;
+    justify-items: center;
+    align-items: center;
     position: relative;
+    top: 80px;
+}
+
+.login-form-container {
+    display: grid;
+    width: 50vw;
+    height: auto;
+    align-items: center;
+    justify-items: center;
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 1px gray;
+    margin-top: min(20px,10vw);
+}
+
+.login-form {
+    color: var(--background-color-1);
+    display: grid;
+    grid-template-columns: 50vw;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    justify-items: center;
+    position: relative;
+}
+
+.form-group {
+    width: 90%;
+    position: relative;
+}
+
+.form-group input {
+    width: 100%;
+    background-color: var(--background-color-3);
+    color: var(--background-color-1);
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 5px;
+}
+
+.form-group {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 1em 0 1em 0;
+    position: relative;
+}
+  
+.form-group input {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid rgb(200, 200, 200);
+  background-color: transparent;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.form-group label {
+  font-size: 100%;
+  position: absolute;
+  left: 0;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: var(--background-color-2)
+}
+
+.form-group :is(input:focus, input:valid)~label {
+  transform: translateY(-50%) scale(.8);
+  margin: 0em;
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.form-group :is(input:focus, input:valid) {
+  border-color: var(--background-color-1);
+}
+
+.register-link {
+    color: var(--background-color-2);
+    transition: all 500ms;
+}
+
+.register-link a {
+    text-decoration: none;
+    color: var(--background-color-3);
+    transition: all 300ms;
+}
+
+.register-link a:hover {
+    text-decoration: none;
+    color: var(--background-color-1);
+}
+
+button {
+    padding: 12.5px 30px;
+    border: 0;
+    border-radius: 100px;
+    background-color: var(--background-color-1);
+    color: white;
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    cursor: pointer;
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 1px gray;
+}
+  
+button:hover {
+    background-color: var(--background-color-2);
+    transform: scale(1.1);
+}
+  
+button:active {
+    background-color: #425f81;
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
+}
+
+.contacts-nav {
+    position: absolute;
+    left: 0px;
+    top: 400px;
+}
+
+.contacts-div {
+    position: absolute;
+    left: 30vw;
+    top: 20vh;
+}
+
+@media (height <= 600px) {
+    .login-form-container {
+        height: 300px;
+    }
+
+    .login-form {
+        gap: 20px;
+        grid-template-rows: 1fr 1fr 60px;
+    }
+
+    .form-group input {
+        height: 40px;
+    }
+
+    #login-text {
+        font-size: 1.5rem;
+    }
+
+    #welcome-message {
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
+
+    button {
+        padding: 5px 15px;
+      }
+
+    .register-link {
+        margin: 0;
+        padding-bottom: 40px;
+    }
     
 }
 
-form {
-    text-align: center;
-    margin-top: 20px;
-}
+@media (height <= 400px) {
 
-.login-container {
-    background-color: #0d2033; /* Background color for the login container */
-    color: #eadb80;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    width: 40%; /* Adjust the width as needed (1/4 of the screen) */
-    padding: 20px;
-    margin: 0 auto; /* Center the container horizontally */
-    position: relative;
-    top: -20px;
-}
+    .login-form-container {
+        height: 300px;
+        position:unset;
+    }
 
+    .login-form {
+        gap: 20px;
+        grid-template-rows: 1fr 1fr 60px;
+    }
 
-/* Target the email input field and add padding to the left */
-form input[type="text"] {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    font-size: 18px;
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 2px solid #c5a43c;
-    position: relative;
-    left: -10px;
-    background-color: #ffffff;
-    color: #0d2033;
-    padding-left: 20px; /* Add left padding to move the text box away from the label */
-}
+    .form-group input {
+        height: 40px;
+    }
 
-label[for="id_username"] {
-    /* Styles for the label associated with the Email field */
-    position: relative;
-    right: 10px;
-}
+    #login-text {
+        font-size: 1.5rem;
+    }
 
-label[for="id_password"] {
-    /* Styles for the label associated with the Email field */
-    position: relative;
-    right: 25.5px;
-    bottom: 0px;
-}
+    #welcome-message {
+        font-size: 1rem;
+        margin-bottom: 0;
+    }
 
-form input[type="password"] {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    font-size: 18px;
-    width: 80%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 2px solid #c5a43c;
-    background-color: #ffffff;
-    color: #0d2033;
-    position: relative;
-    right: 25.5px;
-}
+    button {
+        padding: 5px 15px;
+      }
 
-form button {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    font-size: 20px;
-    color: #eadb80;
-    background-color: #0d2033;
-    border: 2px solid #c5a43c;
-    padding: 10px 20px;
-    cursor: pointer;
-    position: relative;
-    right: 0px;
-    bottom: 0px;
-    transition: background-color 0.3s, color 0.3s;
-}
+    .register-link {
+        margin: 0;
+        padding-bottom: 40px;
+    }
+    
 
-form button:hover {
-    background-color: #c5a43c;
-    color: #0d2033;
-}
-
-a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    font-size: 18px;
-    color: #c5a43c;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-.register-link{
-    position: relative;
-    text-align: center;
-    top: -35px;
-   
 }

@@ -351,7 +351,7 @@ def place_order(message,api):
      elif message['order_type'] == 'crypto_sell_all':
         order = Order.crypto_sell_all(message,api)
 
-
+      # ADD MESSAGE JSONIFIER TO GUIDE
 
      return order
        

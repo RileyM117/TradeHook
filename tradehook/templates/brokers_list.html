@@ -1,28 +1,51 @@
 {% load static %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Broker List</title>
+    <meta name="color-scheme" content="dark light">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap">
-    <link rel="stylesheet" href="{% static 'tradehook/brokers_list.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'tradehook/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'tradehook/brokers_list.css' %}">
+    <title>Brokers</title>
 </head>
 <body>
-    <img class = "logo" src="{% static 'tradehook/FullLogo_Transparent.png' %}" alt="TradeHook Logo">
-    <!-- Home Button (Separate from the container) -->
-    <a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/home/" class="home-button">Home</a>
-
-    <div class="container">
-        <h1>Broker List</h1>
-        <ul>
-            {% for broker in brokers %} 
-                <li>
-                  {{ broker.broker_name }} - {{ broker.description }}
-                  <a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/" class="add-button">ADD</a><br>
-
-                </li>
-            {% endfor %}  
-        </ul>
-    </div>
+    <div class="background-color background-color-1"></div>
+    <div class="background-color background-color-2"></div>
+    <div class="background-color background-color-3"></div>
+    <div class="background-color background-color-4"></div>
+    <header>
+        <div class="header-container">
+            <div class="logo-title-container">
+                <a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/home"><h1 id="logo-title">TradeHook</h1></a>
+            </div>
+            <nav>
+                <ul class="links-list">
+                    <li class="link-list-entry"><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/home/" class="header-link"><h2>Home</h2></a></li>
+                    <li class="link-list-entry"><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/brokers/" class="header-link"><h2>Brokers</h2></a></li>
+                    <li class="link-list-entry"><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/register/" class="header-link"><h2>Register</h2></a></li>
+                    <li class="link-list-entry"><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/" class="header-link"><h2>Login</h2></a></li>   
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="brokers-container">
+                <h2>Broker List</h2>
+                <ul class="brokers-list">
+                    {% for broker in brokers %} 
+                        <li class="brokers-list-entry">
+                          {{ broker.broker_name }} - {{ broker.description }}
+                          <br>
+                          <button><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/api-keys/" class="add-broker-link">Add Broker</a></button>
+                        </li>
+                    {% endfor %}  
+                </ul>
+            </div>
+        </div>
+    </main>
 </body>
 </html>

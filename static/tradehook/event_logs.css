@@ -1,10 +1,10 @@
-/* Reset some default browser styles */
+/* Reset some default browser styles 
 body, h1, table, th, td {
     margin: 0;
     padding: 0;
 }
 
-/* Set a background color and font for the entire page */
+/* Set a background color and font for the entire page 
 body {
     background-color: #0d2033;
     font-family: 'Montserrat', sans-serif;
@@ -26,7 +26,7 @@ body {
     top: 220px;
 }
 
-/* Style the page title */
+/* Style the page title 
 h1 {
     text-align: center;
     font-size: 32px;
@@ -50,7 +50,7 @@ h1 {
     width: 200px;
 }
 
-/* Style the navigation links */
+/* Style the navigation links 
 .home-button {
     display: inline-block;
     font-family: 'Montserrat', sans-serif;
@@ -80,13 +80,13 @@ h1 {
     bottom: 325px;
     right: 32px;
     display: flex;
-    justify-content: space-evenly; /* Adjust this property to control the spacing */
+    justify-content: space-evenly; /* Adjust this property to control the spacing 
     text-align: center;
 }
 
 .heading-container h1 {
-     /* Display headers horizontally */
-    margin: 10px 0px; /* Optional: Add spacing between headers */
+     /* Display headers horizontally 
+    margin: 10px 0px; /* Optional: Add spacing between headers 
 }
 
 .heading-container h1 a {
@@ -110,7 +110,7 @@ h1 {
 
 
 
-/* Style the table */
+/* Style the table 
 table {
     border-collapse: collapse;
     width: 80%;
@@ -123,7 +123,7 @@ table {
     
 }
 
-/* Style the table header */
+/* Style the table header 
 th {
     background-color: #0d2033;
     color: #eadb80;
@@ -134,21 +134,254 @@ th {
     font-weight: 350;
 }
 
-/* Style the table rows */
+/* Style the table rows 
 tr:nth-child(even) {
     background-color: #0d2033;
 }
 
-/* Style the table data cells */
+/* Style the table data cells 
 td, th {
     padding: 8px;
     border: 1px solid #c5a43c;
     
 }
 
-/* Style the table responsive on smaller screens */
+/* Style the table responsive on smaller screens 
 @media (max-width: 600px) {
     table {
         width: 100%;
     }
+}
+
+*/
+* {
+    box-sizing: border-box;
+}
+
+html {
+    margin: 0;
+}
+
+:root {
+    --header-bars-odd-color: rgba(8,153,129,1);
+    --header-bars-even-color: rgba(242,54,69,1);
+    --header-title-color: white;
+    --header-link-color: rgba(255,255,255,0.6);
+    --header-link-hover-color: black;
+    --header-theme-change-button-color: purple;
+
+    --login-welcome-color: black;
+    --login-form-text-color: black;
+    --login-form-background-color: white;
+    --login-form-border-color-active: black;
+    --login-form-register-color: rgba(0,0,0,0.7);
+    --login-form-register-hover-color: rgba(0,0,0,1);
+    --login-form-login-button-color: black;
+    --login-form-login-button-background-color: white;
+
+    --button-text-color: white;
+    --button-background-color: rgba(0,0,0,0.75);
+    --button-hover-background-color: rgba(0,0,0,0.9);
+    --button-active-background-color: rgba(0,0,0,1);
+
+    
+
+    --footer-text-color: black;
+
+    transition: 1000ms;
+}
+
+html.light-theme {
+    --login-welcome-color: black;
+    --login-form-text-color: black;
+    --login-form-background-color: white;
+    --login-form-border-color-active: black;
+    --login-form-register-color: rgba(0,0,0,.7);
+    --login-form-register-hover-color: rgba(0,0,0,1);
+    --login-form-login-button-color: black;
+    --login-form-login-button-background-color: black;
+
+    --button-text-color: white;
+    --button-background-color: rgba(0,0,0,0.5);
+    --button-hover-background-color: rgba(0,0,0,0.75);
+    --button-active-background-color: rgba(0,0,0,1);
+
+}
+
+main {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: 40vh 40vh;
+    justify-items: center;
+    margin-top: 20px;
+    gap: 40px;
+}
+
+.table-container {
+    max-width: 960px;
+    justify-self: start;
+}
+
+.event-log-title{
+    grid-column: 2 / 3;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 50px;
+    font-size: 2rem;
+    color: var(--login-form-login-button-background-color);
+}
+
+.table {
+    border-collapse: collapse;
+}
+  
+.table-column-header,
+.table-data {
+    padding: 10px; /* Adjust the value as needed */
+    border: 1px solid var(--login-form-login-button-background-color); /* Add border styling if needed */
+    border-radius: 2px;
+}
+
+.table-column-header {
+    border: solid 1px var(--login-form-login-button-background-color);
+    border-radius: 2px;
+    margin-inline: 10px;
+    font-weight: 500;
+    color: var(--login-form-login-button-background-color)
+}
+
+.table-data {
+    color: var(--login-form-login-button-background-color)
+}
+
+.hidden {
+    display: none;
+}
+
+.checkboxes-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 45vh 45vh;
+    margin-top: 75px;
+    align-items: end;
+}
+
+#left-filter-container {
+    display: grid;
+    grid-template-rows: repeat(10,20px);
+    gap: 5px;
+}
+
+.left-filter-title-container {
+    margin-block: -5px ;
+    color: var(--login-form-login-button-background-color);
+}
+
+.right-filter-title-container {
+    margin-block: -5px ;
+    color: var(--login-form-login-button-background-color);
+}
+
+#right-filter-container {
+    display: grid;
+    grid-template-rows: repeat(10,20px);
+    gap: 5px;
+}
+
+
+.checkbox-container {
+    display: inline-block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 1.125rem;
+    user-select: none;
+    color: var(--login-form-login-button-background-color);
+  }
+  
+  .custom-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  .checkmark {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid #089981;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+  }
+  
+  .custom-checkbox:checked ~ .checkmark {
+    background-color: #f9f9f9;
+    box-shadow: 0 3px 7px rgba(33, 150, 243, 0.3);
+  }
+  
+  .custom-checkbox:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  @keyframes checkAnim {
+    0% {
+      height: 0;
+    }
+  
+    100% {
+      height: 10px;
+    }
+  }
+  
+  .custom-checkbox:checked ~ .checkmark:after {
+    animation: checkAnim 0.2s forwards;
+  }
+
+button {
+    padding: 12.5px 30px;
+    border: 0;
+    border-radius: 20px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    cursor: pointer;
+    border: solid 1px rgba(0,0,0,0.25);
+    position: relative;
+   margin-inline: 2.5px;
+}
+  
+
+button:hover {
+    background-color: var(--button-hover-background-color);
+}
+  
+button:active {
+    background-color: var(--button-active-background-color);
+    transition: all 0.4s;
+    -webkit-transition: all 0.4s;
+    box-shadow: none;
+    transform: scale(0.98);
 }

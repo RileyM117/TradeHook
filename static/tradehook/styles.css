@@ -7,7 +7,7 @@ body, h1, h2, p, label, input, button {
     
 }
 
-/* Set a background color and font for the entire page */
+/* Set a background color and font for the entire page 
 body {
     background-color: #0d2033;
     font-family: 'Montserrat', sans-serif;
@@ -56,13 +56,13 @@ body {
     bottom: 600px;
     right: 52px;
     display: flex;
-    justify-content: space-evenly; /* Adjust this property to control the spacing */
+    justify-content: space-evenly; /* Adjust this property to control the spacing *
     text-align: center;
 }
 
 .heading-container h1 {
-     /* Display headers horizontally */
-    margin: 10px 0px; /* Optional: Add spacing between headers */
+     /* Display headers horizontally *
+    margin: 10px 0px; /* Optional: Add spacing between headers *
 }
 
 .heading-container h1 a {
@@ -92,7 +92,7 @@ body {
     
 }
 
-/* Style the page title */
+/* Style the page title 
 .page-header {
     text-align: left;
     font-family: 'Montserrat', sans-serif;
@@ -108,7 +108,7 @@ body {
 }
 
 
-/* Style the welcome message and paragraph */
+/* Style the welcome message and paragraph 
 .customer-info {
     font-size: 20px;
     color: #eadb80;
@@ -123,7 +123,7 @@ body {
     margin-top: 10px;
 }
 
-/* Style the form elements */
+/* Style the form elements 
 .form-label {
     font-size: 18px;
     color: #c5a43c;
@@ -167,4 +167,49 @@ p{
     padding: 20px;
     width: 20%;
     margin-bottom: 20px;
+}
+*/
+
+* {
+    box-sizing: border-box;
+    
+}
+
+html,
+body {
+    margin: 0;
+    background-color: rgba(150,150,150,0.2);
+    font-size: 100%;
+    outline: 1px cadetblue solid;
+}
+
+.page-layout {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: 100px 1fr 100px;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: "header header header" "nav main aside"  "footer footer footer";
+    gap: 10px;
+}
+
+.page-layout header {
+    grid-area: header;
+    border: 2px darkred solid;
+}
+.page-layout nav {
+    grid-area: nav;
+    border: 2px darkred solid;
+}
+.page-layout main {
+    grid-area: main;
+    border: 2px darkred solid;
+}
+.page-layout aside {
+    grid-area: aside;
+    border: 2px darkred solid;
+}
+.page-layout footer {
+    grid-area: footer;
+    border: 2px darkred solid;
 }

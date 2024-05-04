@@ -1,141 +1,827 @@
-body {
-    background-color:  #0d2033;
-    /*overflow-y: hidden;*/
-    overflow-x: hidden;
+
+/*
+USE OUTLINE FOR DEBUGGING 
+USE DVH, DVW, SVH, SVW, LVH, LVW for heights and widths
+USE REM for font sizes, default is 16px, 2rem = 32px
+The ch unit represents the width of the 0 letter in the current element's font family.
+min-width = 70ch makes container 70 characters wide and will change depending on font
+clamp(minVal, idealVal, maxVal);
+Thinking in terms of text size? Ems / Rems
+
+Thinking of a child compared to a parent? Percentage
+
+Thinking in terms of the screen size? Vh Vw Vmin Vmax
+
+Thinking in terms of "this number is what i set and no relative changes affect it's value"? Px
+
+Thinking in terms of print dots? Pt
+
+Thinking in terms of Printing Presses with moveable type? Pc
+
+Thinking in terms of The same character size as the default input sizings? Ch
+
+Thinking in terms of grid fractions? Fr
+
+grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+
+  OR
+
+  
+Breakpoint prefix	Minimum width	CSS
+sm	640px	@media (min-width: 640px) { ... }
+md	768px	@media (min-width: 768px) { ... }
+lg	1024px	@media (min-width: 1024px) { ... }
+xl	1280px	@media (min-width: 1280px) { ... }
+2xl	1536px	@media (min-width: 1536px) { ... }
+);
+
+height: 100vh;
+overflow-y: scroll;
+
+100vh just covers initial viewport size so if you scroll down it doesnt cover full height,
+UNLESS you add vertical scroll (Test without overflow-y: scroll; and see difference) */
+
+* {
+    box-sizing: border-box;
 }
 
-.logo {
-    margin: -20px auto;
-    position: relative;
-    right: 30px;
-    display: block;
-    width: 400px;
-    height: auto;
+:root {
 
+    --background-color-1: #202c43;
+    --background-color-2: #2e3f5f;
+    --background-color-3: #6593c7;
+    --background-color-4: #adc4d8;
+
+    --header-background-color: white;
+    --header-text-color: var(--background-color-1);
+    --link-text-color: var(--background-color-1);
+    --link-text-color-hover: #131b2a;
+
+    --main-welcome-text-color: white;
+
+    --current-broker-list-title-color: white; 
+    --future-broker-list-title-color: white; 
 }
 
-.heading-container {
-    
-    text-align: left; 
+html {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden; 
 }
 
-.right-header {
-    
-    text-align: right;
-
-}
-
-.heading-container h1 {
-    display: inline-block;
-    margin: 0 20px;
-}
-
-.right-header h1 {
-    display: inline-block;
-    margin: 0 20px;
-}
-
-.heading-container h1 a {
-    
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    text-decoration: none;
-    padding-left: 100px;
-    position: relative;
-    top: -150px;
-    color: #eadb80;
-    font-size: 30px;
-    transition: color 0.3s;
-}
-
-.right-header h1 a {
-
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    text-decoration: none;
-    padding-right: 100px;
-    position: relative;
-    top: -184px;
-    color: #eadb80;
-    font-size: 30px;
-    transition: color 0.3s;
-}
-
-
-.heading-container h1 a:hover {
-    color: #c5a43c
-}
-
-.right-header h1 a:hover {
-    color: #c5a43c
-}
-
-.welcome-class {
-    font-size: 32px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    color: #c5a43c;  
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 50px;
-    position: relative;
-    right: 30px;
-    top:-80px;
-}
-
-.paragraph-class {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    font-size: 24px;
-    max-width: 800px;
-    color: #c5a43c; 
-    text-align: center;
-    margin: 0px auto;
-    line-height: 1.5; 
-    position: relative;
-    right: 30px;
-    top: -80px;
-}
-
-.detail-paragraph {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    font-size: 20px;
-    max-width: 800px;
-    color: #c5a43c; 
-    text-align: center;
-    margin: 20px auto;
-    line-height: 1.5;
-    position: relative;
-    right: 30px;
-    top: -80px;
-}
-
-.webhook_count{
-    font-size: 22px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 250;
-    color: rgba(197, 164, 60, 0.8);
-    text-align: center;
-    margin-top: 0px;
-    margin-bottom: 50px;
+.background-color {
+    z-index: -10;
     position: absolute;
-    right: 675px;
-    top: 580px;
+    border-bottom: 1px solid black;
+}
+
+.background-color-1 {
+    top: 0%;
+    left: 0%;
+    width: 45vw;
+    height: 100%;
+    background-color: var(--background-color-1);
+}
+
+.background-color-2 {
+    top: 0;
+    left: 45vw;
+    width: 7vw;
+    height: 100%;
+    background-color: var(--background-color-2);
+}
+
+.background-color-3 { 
+    top: 0dvh; 
+    left: 52vw;
+    width: 37vw;
+    height: 100%;
+    background-color: var(--background-color-3);
+    
+}
+
+.background-color-4 { 
+    top: 0;
+    left: 89vw;
+    width: 11vw;
+    height: 100%;
+    background-color: var(--background-color-4);
 }
 
 
-.contact-info {
-    text-align: center;
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.header-container {
+    width: 100%;
+    height: 80px;
+    background-color: var(--header-background-color); 
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 100px;
+    align-items: center;
+    position: fixed;
+    z-index: 1;
+    border-bottom: 1px solid rgba(0,0,0,0.45);
+}
+
+.logo-title-container {
+    width: 300px;
+    background-color: transparent;
+    grid-column: 1 / 3;
+}
+
+#logo-title {
+    color: var(--header-text-color);
+    font-size: 3rem;
+    font-weight: 600;
+    position: absolute;
+    bottom: -20px;
+    left: 6.25vw;
+    padding-left: 57.5px; 
+    background-image: url('LogoBars.PNG');
+    background-size: 97px; 
+    background-repeat: no-repeat; 
+    background-position: left -20px bottom -22px;
+}
+
+.links-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 5px;
+    left: 54.5vw;
+    left: 54.5dvw;
+}
+
+.link-list-entry {
+    margin-right: 4vw;
+}
+
+.link-list-entry a h2 {
+    color: var(--link-text-color);
+    font-size: 1.5rem;
+    font-weight: 400;
+    transition: all 300ms;
+}
+
+.link-list-entry a h2:hover {
+    color: #6593c7;
+    scale: 1.1;
+}
+
+a {
+    text-decoration: none;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 5vw 1fr 1fr 5vw;
+    grid-template-rows: 100vh;
+    align-items: center;
+}
+
+.text-container {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    margin-top: 15vh;
+}
+
+#welcome-text {
+    font-weight: 500;
+    font-size: calc(1.75vw + 2.25vh); 
+    line-height: 1.5;
+    color: var(--main-welcome-text-color);
+}
+
+#description-text {
+    font-size: calc(1.2vw + 0.7vh); 
+    line-height: 1.5;
+    font-weight: 400;
+    transition: 300ms;
+    width: 40vw;
+    color: var(--main-welcome-text-color);
+}
+
+.additional-text-container {
+    margin-top: 8vh;
     position: relative;
-    right: 30px;
-    top: 50px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    font-size: 16px;
-    color: rgba(197, 164, 60, 0.6);
+    right: 20px;
 }
 
+.additional-text-list {
+    list-style: none;
+}
 
+.additional-text-entry h3{
+    color: white;
+    line-height: 1.5;
+    font-size: calc(1vw + 1vh); 
+    font-weight: 300;
+    font-style: italic;
+    margin-block: 3vh;
+    padding-left: 2.35vw; 
+    background-image: url('newListStyle.PNG');
+    background-size: 2.5vw; 
+    background-repeat: no-repeat; 
+    background-position: left 0px bottom -0.7vh;
+}
 
+.broker-nav {
+    grid-row: 1/2;
+    grid-column: 3/4;
+    display: grid;
+    grid-template-columns: 1fr;
+    position: relative;
+    right: 40px;
+    top: 3vh;
+}
 
+.broker-nav .current-broker-list {
+    justify-self: center;
+}
+
+.current-broker-list {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 15vw;
+    grid-template-rows: 50px 15vh;
+    align-items: center;
+    justify-items: center;
+    column-gap: 10px;
+}
+
+.current-broker-list div {
+    width: 15vw;
+    height: 15vh;
+    background-color: white;
+    display: grid;
+    grid-template-columns: 15vw;
+    grid-template-rows: 15vh;
+    align-items: center;
+    justify-items: center;
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 1px gray;
+    border-radius: 2%;
+    grid-row: 2 / 3;
+    transition: all 300ms;
+}
+
+.current-broker-list div:hover {
+    scale: 1.1;
+}
+
+.future-broker-list {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 15vw 15vw;
+    grid-template-rows: 50px 15vh 15vh 15vh;
+    align-items: center;
+    justify-items: center;
+    column-gap: 20px;
+    row-gap: 10px;
+    background-color: var(--text-background-color);
+    justify-self: center;
+    margin: 0;
+}
+
+.current-list-title {
+    color: var(--current-broker-list-title-color);
+    font-size: calc(0.7vw + 1.25vh);
+}
+
+.list-title {
+    grid-column: 1 / 3;
+    font-size: calc(0.7vw + 1.25vh);
+    color: var(--future-broker-list-title-color)
+}
+
+.future-broker-list div:first-of-type {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+}
+
+.future-broker-list div:nth-child(3) { 
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+} 
+
+.future-broker-list div:nth-child(4) { 
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+} 
+
+.future-broker-list div:nth-child(5) { 
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
+
+.future-broker-list div:nth-child(6) { 
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+.future-broker-list div:nth-child(7) { 
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+} 
+
+.broker-img {
+    width: 12vw;
+    height: auto;
+}
+
+.future-broker-list div {
+    width: 15vw;
+    height: 15vh;
+    background-color: white; 
+    display: grid;
+    grid-template-columns: 15vw;
+    grid-template-rows: 15vh;
+    align-items: center;
+    justify-items: center;
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 1px gray;
+    border-radius: 2%;
+    transition: all 300ms;
+}
+
+.future-broker-list div:hover {
+    scale: 1.1;
+}
+
+.contacts-div {
+    position: absolute;
+    bottom: 50px;
+    left: 1365px;
+    display: grid;
+    grid-template-columns: 2.9vw 2.9vw 2.9vw;
+    padding-left: 20px;
+}
+
+.contact {
+    transition: all 300ms;
+}
+
+.contact:hover {
+    scale: 1.1;
+}
+
+.google-logo {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    justify-content: center;
+}
+
+.linkedin-logo {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    justify-content: center;
+    justify-self: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+}
+
+.github-logo {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    justify-content: center;
+}
+
+.footer-button {
+    max-width: 7.5vw;
+    display: flex; 
+    justify-items: start;
+    align-items: center; 
+    padding: 0.5rem 1.4rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 0.5rem;
+    border: 1px solid transparent;
+    gap: 0.75rem;
+    color: rgb(65, 63, 63);
+    background-color: transparent;
+    cursor: pointer;
+    transition: all .6s ease;
+    justify-self: center;
+}
+
+.footer-button svg {
+    transition: all 0.6s ease;
+    height: 24px;
+}
+
+.footer-button:hover {
+    transition: all 0.6s ease;
+    transform: scale(1.12);
+}
+
+.footer-button::after {
+    content: ""; 
+    position: absolute;
+    top: 50%;
+    left: calc(3rem);
+    transform: translateY(-50%);
+    background-color: var(--background-color-4);
+    color: black;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    display: none;
+    transition: all 0.6s ease;
+}
+
+.footer-button:hover::after {
+    display: block; 
+    transition: all 0.6s ease;
+}
+
+.socail-media {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.socail-media  {
+  width: 2.3vw;
+  height: 2.3vw;
+  background-color: #0b65c2;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  position: relative;
+  z-index: 9;
+  border: 1px solid #0b65c2;
+  border-radius: 4px;
+  transition: all 400ms;
+}
+
+.socail-media:hover {
+    scale: 1.1;
+}
+
+.socail-media svg {
+  width: 1.5vw;
+  height: 1.5vw;
+  -o-object-fit: contain;
+  object-fit: contain;
+  filter: invert(100%) sepia(0%) saturate(7455%) hue-rotate(57deg) brightness(108%) contrast(105%);
+} 
+
+.Link {
+    border-radius: 50%;
+    width: 2.3vw;
+    height: 2.3vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition-duration: .4s;
+    cursor: pointer;
+    position: relative;
+    background-color: rgb(31, 31, 31);
+    overflow: hidden;
+    text-decoration: none;
+    justify-self: center;
+    align-self: center;
+}
+
+.svgIcon {
+    width: 1.6vw;
+    height: 1.6vw
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.text {
+  position: absolute;
+  color: rgb(255, 255, 255);
+  width: 12px;
+  font-weight: 600;
+  opacity: 0;
+  transition-duration: .4s;
+}
+
+@media (width < 1000px) and (width > 750px) {
+
+    .additional-text-container {
+        right: 40px;
+    }
+    
+    .additional-text-entry h3{
+        background-position: left 0px bottom -0.3vh;
+    }
+
+}
+
+@media (width < 950px) and (width > 750px) {
+
+    #logo-title {
+        padding-right: 20px;
+    }
+
+    .links-list {
+        padding-left: 20px;
+        left: 50vw;
+        left: 50dvw;
+    }
+
+    .link-list-entry {
+        margin-right: 2.5vw;
+    }
+
+} 
+
+@media (width < 872px) and (width > 750px) {
+
+    
+    .current-list-title {
+        text-align: center;
+    }
+}
+
+@media (width < 785px) {
+
+    .links-list {
+        padding-left: 20px;
+        left: 45vw;
+        left: 45dvw;
+    }
+
+    .link-list-entry {
+        margin-right: 2vw;
+    }
+    
+    #logo-title {
+        font-size: 3rem;
+        bottom: -20px;
+        left: 1vw;
+        padding-left: 57.5px; 
+        background-size: 97px; 
+        background-position: left -20px bottom -22px;
+    }
+}
+
+@media (width < 750px) {
+
+    .background-color {
+        border-bottom: 1px solid black;
+    }
+    
+    .background-color-1 {
+        left: 0;
+        width: 350px;
+    }
+    
+    .background-color-2 {
+        left: 350px;
+        width: 40px;
+    }
+    
+    .background-color-3 {  
+        left: 390px;
+        width: 280px;
+    }
+    
+    .background-color-4 { 
+        left: 655px;
+        width: 110px;
+    }
+
+    .main-container {
+        grid-template-columns: 5vw 330px 350px 5vw;
+    }
+
+    .text-container {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+        margin-top: 15vh;
+    }
+
+    #welcome-text {
+        font-size: 1.625rem;
+        line-height: 1.5;
+    }
+
+    #description-text {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        width: 300px;
+    }
+
+    .additional-text-container {
+        right: 20px;
+    }
+
+    .additional-text-entry h3{
+        line-height: 1.5;
+        font-size: 0.8rem!important;
+        padding-left: 22px!important; 
+        background-image: url('newListStyle.PNG');
+        background-size: 25px!important; 
+        background-position: left 0px bottom -4px!important;
+    }
+
+    .broker-nav {
+        grid-template-columns: 1fr;
+        right: 40px;
+    }
+
+    .current-broker-list {
+        grid-template-columns: 113.4px;
+        column-gap: 10px;
+    }
+
+    .current-broker-list div {
+        width: 113.4px;
+        height: auto;
+        grid-template-columns: 113.4px;
+    }
+
+    .future-broker-list {
+        grid-template-columns: 113.4px 113.4px;
+        grid-template-rows: 50px 15vh 15vh 15vh;
+        column-gap: 10px;
+        row-gap: 10px;
+        margin: 0;
+    }
+
+    .current-list-title {
+        font-size: 0.7rem;
+    }
+
+    .list-title {
+        font-size: 0.7rem;
+    }
+
+    .broker-img {
+        width: 100px;
+    }
+
+    .future-broker-list div {
+        width: 113.4px;
+        height: auto;
+        grid-template-columns: 113.4px;
+        grid-template-rows: 15vh;
+    }
+
+    .future-broker-list div:hover {
+        scale: 1.1;
+    }
+
+    .footer-button {
+        max-width: 62px;
+    }
+
+    .socail-media {
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        gap: 20px;
+        list-style: none;
+    }
+
+    .socail-media  {
+      width: 20px;
+      height: 20px;
+    }
+
+    .socail-media svg {
+      width: 12.5px;
+      height: 12.5px;
+    } 
+
+    .Link {
+        width: 20px;
+        height: 20px;
+    }
+
+    .svgIcon {
+        width: 14px;
+        height: 14px;
+    }
+
+    .additional-text-container {
+        right: 50px;
+    }
+
+}
+
+@media (width < 675px) {
+    .links-list {
+        padding-left: 20px;
+        left: 300px;
+    }
+}
+
+@media (height < 580px) {
+
+    .broker-nav  {
+        top: 5vh;
+    }
+    
+    .current-broker-list {
+        grid-template-rows: 30px 15vh;
+    }
+    
+    .current-broker-list div {
+        width: 15vw;
+        height: 15vh;
+        grid-template-columns: 15vw;
+        grid-template-rows: 15vh;
+    }
+    
+    .future-broker-list {
+        grid-template-columns: 15vw 15vw;
+        grid-template-rows: 30px 15vh 15vh 15vh;
+        row-gap: 10px;
+    }
+    
+    .current-list-title {
+        font-size: calc(0.7vw + 1.25vh);
+    }
+    
+    .list-title {
+        font-size: calc(0.7vw + 1.25vh);
+    }
+    
+    .broker-img {
+        width: 12vw;
+        height: auto;
+    }
+    
+    .future-broker-list div {
+        width: 15vw;
+        height: 15vh;
+        grid-template-columns: 15vw;
+        grid-template-rows: 15vh;
+    }
+}
+
+@media (height < 475px) {
+
+    .broker-nav {
+        top: 6vh;
+    }
+    
+    .current-broker-list {
+        grid-template-rows: 30px 15vh;
+    }
+    
+    .current-broker-list div {
+        width: 15vw;
+        height: 15vh;
+        grid-template-columns: 15vw;
+        grid-template-rows: 15vh;
+    }
+    
+    .future-broker-list {
+        grid-template-columns: 15vw 15vw;
+        grid-template-rows: 30px 15vh 15vh 15vh;
+        row-gap: 10px;
+    }
+    
+    .current-list-title {
+        font-size: calc(0.7vw + 1.25vh);
+    }
+    
+    .list-title {
+        font-size: calc(0.7vw + 1.25vh);
+    }
+    
+    .broker-img {
+        width: 12vw;
+        height: auto;
+    }
+    
+    .future-broker-list div {
+        width: 15vw;
+        height: 15vh;
+        grid-template-columns: 15vw;
+        grid-template-rows: 15vh;
+    }
+
+}

@@ -1,39 +1,81 @@
 {% load static %}
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark light">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap">
-    <link rel="stylesheet" type="text/css" href="{% static 'tradehook/styles.css' %}">
-    <title>Customer Details</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'tradehook/home.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'tradehook/setup_guide.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'tradehook/profile.css' %}">
+    <title>Your-Profile</title>
 </head>
 <body>
-    <img class = "logo" src="{% static 'tradehook/FullLogo_Transparent.png' %}" alt="TradeHook Logo">
-    <a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/account/" class="home-button">Account</a>
-    <div class="whole">
-        
-        <h1 class="page-header">Profile Information</h1>
-
-        {% if customer %}
-            <p><strong class="form-label">First Name:</strong> <span class="customer-info">{{ customer.first_name }}</span></p>
-            <p><strong class="form-label">Last Name:</strong> <span class="customer-info">{{ customer.last_name }}</span></p>
-            <p><strong class="form-label">Username:</strong> <span class="customer-info">{{ customer.username }}</span></p>
-            <p><strong class="form-label">Email:</strong> <span class="customer-info">{{ customer.email }}</span></p>
-        {% else %}
-            <p class="error-message">No customer details available.</p>
-        {% endif %}
-
-    </div>
-
-    <div class="heading-container">
-        
-        <h1><a class="profilelink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/me/">Profile</a></h1>
-        <h1><a class="apilink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/">My API Keys</a></h1>
-        <!--  <h1><a class="setuplink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/account/">Account</a></h1> -->
-        <h1><a class="setuplink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/alert_guide/">Alert Guide</a></h1> 
-        <h1><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/view/event_logs/">Event Logs</a></h1>
-        <h1><a class="logoutlink" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/logout/">Logout</a></h1>
-
-
-    </div>
-
+    <div class="background-color background-color-1"></div>
+    <div class="background-color background-color-2"></div>
+    <div class="background-color background-color-3"></div>
+    <div class="background-color background-color-4"></div>
+    <header>
+        <div class="header-container">
+            <div class="logo-title-container">
+                <a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/home"><h1 id="logo-title">TradeHook</h1></a>
+            </div>
+            <nav>
+                <ul class="links-list">
+                    <li class="link-list-entry"><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/home/" class="header-link"><h2>Home</h2></a></li>
+                    <li class="link-list-entry"><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/brokers/" class="header-link"><h2>Brokers</h2></a></li>
+                    <li class="link-list-entry"><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/register/" class="header-link"><h2>Register</h2></a></li>
+                    <li class="link-list-entry"><a href="https://tradehook-prod-fbb7997de66a.herokuapp.com/" class="header-link"><h2>Login</h2></a></li>   
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <div class="main-container">
+            <div class="sidebar-div">
+                <nav class="sidebar-links-nav">
+                    <ul class="sidebar-links-list">
+                        <li class="sidebar-links-list-entry">Your Account</li>
+                        <li class="sidebar-links-list-entry"><a id="setup-guide" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/account/"><svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M4 9C4 11.9611 5.60879 14.5465 8 15.9297V15.9999C8 18.2091 9.79086 19.9999 12 19.9999C14.2091 19.9999 16 18.2091 16 15.9999V15.9297C18.3912 14.5465 20 11.9611 20 9C20 4.58172 16.4183 1 12 1C7.58172 1 4 4.58172 4 9ZM16 13.4722C17.2275 12.3736 18 10.777 18 9C18 5.68629 15.3137 3 12 3C8.68629 3 6 5.68629 6 9C6 10.777 6.7725 12.3736 8 13.4722L10 13.4713V16C10 17.1045 10.8954 17.9999 12 17.9999C13.1045 17.9999 14 17.1045 14 15.9999V13.4713L16 13.4722Z"
+                              fill="currentColor"
+                            />
+                            <path
+                              d="M10 21.0064V21C10.5883 21.3403 11.2714 21.5351 12 21.5351C12.7286 21.5351 13.4117 21.3403 14 21V21.0064C14 22.111 13.1046 23.0064 12 23.0064C10.8954 23.0064 10 22.111 10 21.0064Z"
+                              fill="currentColor"
+                            />
+                          </svg>Setup Guide</a></li>
+                        <li class="sidebar-links-list-entry"><a id="alert-guide" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/alert-guide"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M14 3V3.28988C16.8915 4.15043 19 6.82898 19 10V17H20V19H4V17H5V10C5 6.82898 7.10851 4.15043 10 3.28988V3C10 1.89543 10.8954 1 12 1C13.1046 1 14 1.89543 14 3ZM7 17H17V10C17 7.23858 14.7614 5 12 5C9.23858 5 7 7.23858 7 10V17ZM14 21V20H10V21C10 22.1046 10.8954 23 12 23C13.1046 23 14 22.1046 14 21Z" fill="currentColor" /></svg>Alert Guide</a></li>
+                        <li class="sidebar-links-list-entry"><a id="event-log" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/event-logs"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M20 4H4C3.44771 4 3 4.44772 3 5V19C3 19.5523 3.44772 20 4 20H20C20.5523 20 21 19.5523 21 19V5C21 4.44771 20.5523 4 20 4ZM4 2C2.34315 2 1 3.34315 1 5V19C1 20.6569 2.34315 22 4 22H20C21.6569 22 23 20.6569 23 19V5C23 3.34315 21.6569 2 20 2H4ZM6 7H8V9H6V7ZM11 7C10.4477 7 10 7.44772 10 8C10 8.55228 10.4477 9 11 9H17C17.5523 9 18 8.55228 18 8C18 7.44772 17.5523 7 17 7H11ZM8 11H6V13H8V11ZM10 12C10 11.4477 10.4477 11 11 11H17C17.5523 11 18 11.4477 18 12C18 12.5523 17.5523 13 17 13H11C10.4477 13 10 12.5523 10 12ZM8 15H6V17H8V15ZM10 16C10 15.4477 10.4477 15 11 15H17C17.5523 15 18 15.4477 18 16C18 16.5523 17.5523 17 17 17H11C10.4477 17 10 16.5523 10 16Z" fill="currentColor" /></svg>Event Log</a></li>
+                        <li class="sidebar-links-list-entry"><a id="api-keys" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/api-keys/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6 8C4.34315 8 3 9.34315 3 11V13C3 14.6569 4.34315 16 6 16C7.65685 16 9 14.6569 9 13H15V15H17V13H18V15H20V11H9C9 9.34315 7.65685 8 6 8ZM7 13V11C7 10.4477 6.55228 10 6 10C5.44772 10 5 10.4477 5 11V13C5 13.5523 5.44772 14 6 14C6.55228 14 7 13.5523 7 13Z" fill="currentColor" /></svg>API Keys</a></li>
+                        <li class="sidebar-links-list-entry"><a id="profile" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/me"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M16 9C16 11.2091 14.2091 13 12 13C9.79086 13 8 11.2091 8 9C8 6.79086 9.79086 5 12 5C14.2091 5 16 6.79086 16 9ZM14 9C14 10.1046 13.1046 11 12 11C10.8954 11 10 10.1046 10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9Z" fill="currentColor" /><path fill-rule="evenodd" clip-rule="evenodd" d="M12 1C5.92487 1 1 5.92487 1 12C1 18.0751 5.92487 23 12 23C18.0751 23 23 18.0751 23 12C23 5.92487 18.0751 1 12 1ZM3 12C3 14.0902 3.71255 16.014 4.90798 17.5417C6.55245 15.3889 9.14627 14 12.0645 14C14.9448 14 17.5092 15.3531 19.1565 17.4583C20.313 15.9443 21 14.0524 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12ZM12 21C9.84977 21 7.87565 20.2459 6.32767 18.9878C7.59352 17.1812 9.69106 16 12.0645 16C14.4084 16 16.4833 17.1521 17.7538 18.9209C16.1939 20.2191 14.1881 21 12 21Z" fill="currentColor" /></svg>Profile</a></li>
+                        <li class="sidebar-links-list-entry"><a id="logout" href="https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/logout"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.51428 20H4.51428C3.40971 20 2.51428 19.1046 2.51428 18V6C2.51428 4.89543 3.40971 4 4.51428 4H8.51428V6H4.51428V18H8.51428V20Z" fill="currentColor" /><path d="M13.8418 17.385L15.262 15.9768L11.3428 12.0242L20.4857 12.0242C21.038 12.0242 21.4857 11.5765 21.4857 11.0242C21.4857 10.4719 21.038 10.0242 20.4857 10.0242L11.3236 10.0242L15.304 6.0774L13.8958 4.6572L7.5049 10.9941L13.8418 17.385Z" fill="currentColor" /></svg>Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="profile-container">
+                <h2 class="page-header">Profile Information</h2>
+                {% if customer %}
+                    <p><strong class="form-label">First Name</strong><br> <span class="customer-info">{{ customer.first_name }}</span></p>
+                    <p><strong class="form-label">Last Name</strong><br> <span class="customer-info">{{ customer.last_name }}</span></p>
+                    <p><strong class="form-label">Username</strong><br> <span class="customer-info">{{ customer.username }}</span></p>
+                    <p><strong class="form-label">Email</strong><br> <span class="customer-info">{{ customer.email }}</span></p>
+                {% else %}
+                    <p class="error-message">No customer details available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>    
 </body>
 </html>

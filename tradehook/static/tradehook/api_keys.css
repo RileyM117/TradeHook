@@ -1,224 +1,405 @@
-/* Reset some default browser styles */
-body, h2, ul, li, p, button {
+* {
+    box-sizing: border-box;
+}
+
+:root {
+
+    --background-color-1: #202c43;
+    --background-color-2: #2e3f5f;
+    --background-color-3: #6593c7;
+    --background-color-4: #adc4d8;
+
+    --header-background-color: white;
+    --header-text-color: var(--background-color-1);
+    --link-text-color: var(--background-color-1);
+    --link-text-color-hover: #131b2a;
+
+    --main-welcome-text-color: white;
+
+    --current-broker-list-title-color: white; 
+    --future-broker-list-title-color: white; 
+}
+
+html {
     margin: 0;
-    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    overflow-x: hidden; 
+}
+
+.disabled {
+    display: none;
+}
+
+.header-container {
+    z-index: 10!important;
+}
+
+.links-list {
+    margin-left: 80px;
+}
+
+.background-color {
+    z-index: 1!important;
+    position: fixed;
+    border-bottom: 1px solid black;
+}
+
+.background-color-1 {
+    top: 0%;
+    left: 250px;
+    width: 35vw;
+    height: 100%!important;
+    background-color: var(--background-color-1)!important;
+}
+
+.background-color-2 {
+    top: 0;
+    left: calc(35vw + 250px);
+    width: 7vw;
+    height: 100%!important;
+    background-color: var(--background-color-2)!important;
+}
+
+.background-color-3 { 
+    top: 0dvh; 
+    left: calc(42vw + 250px);
+    width: 35vw;
+    height: 100%!important;
+    background-color: var(--background-color-3)!important;
     
 }
 
-/* Set a background color and font for the entire page */
-body {
-    background-color: #0d2033;
-    font-family: 'Montserrat', sans-serif;
-    padding: 20px;
+.background-color-4 { 
+    top: 0;
+    left: calc(77vw + 250px);
+    width: 11vw;
+    height: 100%!important;
+    background-color: var(--background-color-4)!important;
 }
 
-.logo {
-    display: block;
-    margin: -75px auto;
-    width: 400px;
+.main-container {
+    grid-template-columns: 250px 35vw 7vw 35vw 1fr!important;
+    grid-template-rows: 20vh 80vh;
+}
+
+.sidebar-div {
+    width: 250px;
+    height: calc(100% + 100vh)!important;
+    margin-top: 0px;
+    background-color: var(--sidebar-background-color);
+    display: grid;
+    justify-content: center!important;
+    align-content: center;
+    position: fixed;
+    border-right: 1px solid rgba(0,0,0,0.45);
+    border-bottom: 1px solid rgba(0,0,0,0.45);
+}
+
+.sidebar-links-nav {
+    padding-bottom: 660px;
+}
+
+.simple-info-container {
+    z-index: 1;
+    grid-column: 2 / 3;
+    grid-row: 2 / 4!important;
+    display: grid;
+    grid-template-columns: 35vw;
+    justify-items: center;
+}
+
+.add-broker-form-container {
+    z-index: 10;
+    grid-column: 4 / 5;
+}
+
+.generate-warning {
+    color: var(--background-color-1);
+    margin: 0;
+    font-size: 1rem;
+    height: 30px;
+}
+
+.keys-container {
     height: auto;
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 100px;
+    justify-items: center;
+    align-content: center;
+    margin-top: 50px;
+}
+
+.tradehook-api-form-container {
+    color: var(--background-color-1);
+    display: grid;
+    grid-template-columns: 550px;
+    grid-template-rows: 1fr 1fr 30px 1fr;
+    justify-items: center;
+    align-content: center;
+    gap: 0px;
+}
+
+#generate-delete-form {
+    display: flex;
+    gap: 10px
+}
+
+button {
+    padding: 12.5px 30px;
+    border: 0;
+    border-radius: 100px;
+    background-color: white;
+    color: var(--background-color-1);
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    cursor: pointer;
+    border: solid 1px rgba(0,0,0,0.25);
+    position: relative;
    
 }
-
-/* Style the "Home" button */
-.home-button {
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: #c5a43c;
-    text-decoration: none;
-    border: 2px solid #c5a43c;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    position: absolute;
-    top: 35px;
+  
+button:hover {
+    background-color: var(--background-color-4);
+    transform: scale(1.1);
+}
+  
+button:active {
+    background-color: var(--background-color-3);
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
 }
 
-.home-button:hover {
-    background-color: #c5a43c;
-    color: #0d2033;
-}
-
-.heading-container {
-    text-align: center;
-    margin:20px;
-    display: flex;
-    justify-content: space-evenly;
-    position: absolute;
-    right: 10px;
-    top: 150px;
-}
-
-.heading-container h1 {
-    margin: 20px 35px;
-    
-}
-
-.apilink {
-    width: 250px;
-}
-
-.eventloglink {
-    width: 250px;
-}
-
-
-.setuplink {
-    width: 200px;
-}
-
-.heading-container h1 a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    text-decoration: none;
-    display: inline-block;
-    margin: 0 20px;
-    color: #eadb80;
-    font-size: 30px;
-    transition: color 0.3s;
-}
-
-.heading-container h1 a:hover {
-    color: #c5a43c;
-}
-
-.whole {
-    /*display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;*/
-    position: absolute;
-    top: 270px;
-    left: 20px;
-    width: 250px;
-}
-
-/* Style the form buttons */
-form button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #0d2033;
-    color: #0d2033;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-form button:hover {
-    background-color: #0056b3;
-}
-
-.apikey {
-    width: 700px;
-    margin-bottom: 10px;
-}
-
-.delete {
-    position: absolute;
-    left: 220px;
-    width: 200px;
-
-}
-
-.generate {
-    width: 200px;
-}
-
-/* Style the headings */
-h2 {
-    font-size: 28px;
+.brokers-list {
     margin-top: 20px;
-    color: #c5a43c;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    width: 400px;
-}
-
-/* Style the list of brokers */
-ul {
-    list-style-type: none;
-    margin: 20px 0;
-    padding: 0;
-}
-
-li {
-    border: 1px solid #c5a43c;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr;
+    justify-items: center;
+    align-content: center;
+    gap: 0px;
+    color: var(--background-color-1);
+    background-color: white;
+    text-align: start;
+    justify-content: center;
     border-radius: 5px;
-    padding: 10px;
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 2px gray;
     margin-bottom: 10px;
-    background-color: #0d2033;
-    color: #eadb80;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    font-weight: 350;
-    width: 550px;
+    width: 80%;
 }
 
-/* Style the API Key display */
+h3 {
+    font-size: calc(1.05vw + 1.55vh);
+    letter-spacing: 1.15px;
+    line-height: 1.5rem;
+    font-weight: 500;
+}
+
 p {
-    font-size: 20px;
-    color: #eadb80;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    margin-top: 20px;
+    font-size: calc(0.65vw + 1vh);;
+    line-height: 1.5rem;
+    font-weight: 400;
 }
 
-/* Style the forms */
-form {
-    margin-top: 0px;
+.broker-p {
+    border-bottom: solid 1px rgba(0,0,0,0.25);
+    padding-left: 3px;
 }
 
-/* Style form inputs and labels */
-form input[type="text"],
-form input[type="password"] {
-    width: 500px;
-    padding: 10px;
-    font-size: 16px;
+#broker-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+    border-top: solid 2px var(--background-color-2);
+}
+
+.broker-form {
+    display: grid;
+    grid-template-columns: 25vw;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-content: center;
+    gap: 0px;
     margin-bottom: 10px;
-    border: 1px solid #ccc;
+}
+
+.add-broker-form-container {
+    z-index: 2;
+    display: grid;
+    height: 520px;
+    grid-template-columns: 32.5vw;
+    grid-template-rows: 80px 1fr;
+    justify-items: center;
+    background-color: white;
     border-radius: 5px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 2px gray;
+    color: black;
+    position: fixed;
+    left: 59.5vw;
+    top: 20%;
 }
 
-.broker {
-    margin-top: 20px;
+.add-broker-form {
+    width: 32vw;
+    display: grid;
+    grid-template-columns: 32vw;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-content: center;
+    gap: 20px;
 }
 
-/* Style form buttons within forms */
-form button[type="submit"] {
-    background-color: #0d2033;
-    color: #c5a43c;
-    border: 2px solid #c5a43c;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+#broker-name-text {
+    font-size: 1.125rem;
 }
 
-form button[type="submit"]:hover {
-    background-color: #c5a43c;
-    color: #0d2033;
-}
-
-.errorlist {
-    margin: -10px;
-}
-
-.errorlist li {
-    border: none;
-    font-size: 0px;
-    color:#0d2033;
-}
-
-#id_broker_name {
-    margin: 0px;
-    width: 200px;
+select {
+    width: 40%;
     height: 30px;
+    background-color: var(--background-color-2);
+    border-radius: 5px;
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 2px gray;
+}
+
+.form-group input {
+    width: 90%;
+    background-color: var(--background-color-4);
+    color: var(--background-color-4);
+    height: 50px;
+    border-radius: 5px;
+}
+
+.form-group {
+    width: 90%;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 1em 0 1em 0;
+    position: relative;
+}
+  
+.form-group input {
+  font-size: 100%;
+  padding: 0.8em;
+  outline: none;
+  border: 2px solid rgb(200, 200, 200);
+  background-color: transparent;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.form-group label {
+  font-size: 100%;
+  position: absolute;
+  left: 0;
+  padding: 0.8em;
+  margin-left: 0.5em;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  color: rgb(100, 100, 100);
+}
+
+.form-group :is(input:focus, input:valid)~label {
+  transform: translateY(-50%) scale(.8);
+  margin: 0em;
+  margin-left: 1.3em;
+  padding: 0.4em;
+  background-color: white;
+}
+
+.form-group :is(input:focus, input:valid) {
+  border-color: var(--background-color-1);
+}
+
+.brokers-list-entry {
+    transform: unset;
+}
+
+.tradehook-api-form-container {
+    align-content: center;
+    justify-content: center;
+    width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 2px gray;
+
+}
+
+.brokers-list-entry:not(:last-of-type) {
+    border-bottom: solid 2px var(--background-color-2);
+    margin-bottom: 25px;
+}
+
+@media (width < 950px) {
+    /* .main-container {  */
+        /* grid-template-columns: 250px 200px 50px 35vw 1fr!important; */
+        /* grid-template-rows: 20vh 80vh; */
+        /* grid-template-columns: 270px 300px 400px 1fr 1fr!important; */
+    /* } */
+
+    .links-list {
+        margin-left: 0px;
+    }
+
+    .simple-info-container {
+        position: absolute!important;
+        left: calc(200px + 10vw);
+        top: 90px;
+    }
+
+    .add-broker-form-container {
+        position: absolute;
+        left: 600px;
+        top: 90px;
+        grid-template-columns: 300px;
+    }
+
+    .brokers-list {
+        width: 250px;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.7rem;
+    }
+    .tradehook-api-form-container {
+        grid-template-columns: 550px;
+        width: 250px;
+    }
+
+    .broker-form {
+        display: grid;
+        grid-template-columns: 150px;
+    }
+}
+
+@media (width < 650px) {
+    .simple-info-container {
+        position: absolute!important;
+        left: calc(200px + 15vw);
+        top: 90px;
+    }
+
+    .links-list {
+        margin-left: 0px;
+    }
+}
+
+@media (width < 540px) {
+    .simple-info-container {
+        position: absolute!important;
+        left: calc(200px + 20vw);
+        top: 90px;
+    }
+
+    .links-list {
+        margin-left: 0px;
+    }
 }

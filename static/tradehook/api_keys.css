@@ -1,469 +1,264 @@
-/* Reset some default browser styles */
-body, h2, ul, li, p, button {
+* {
+    box-sizing: border-box;
+}
+
+html {
     margin: 0;
-    padding: 0;
+}
+
+:root {
+    --header-bars-odd-color: rgba(8,153,129,1);
+    --header-bars-even-color: rgba(242,54,69,1);
+    --header-title-color: white;
+    --header-link-color: rgba(255,255,255,0.6);
+    --header-link-hover-color: black;
+    --header-theme-change-button-color: purple;
+
+    --login-welcome-color: black;
+    --login-form-text-color: black;
+    --login-form-background-color: white;
+    --login-form-border-color-active: black;
+    --login-form-register-color: rgba(0,0,0,0.7);
+    --login-form-register-hover-color: rgba(0,0,0,1);
+    --login-form-login-button-color: black;
+    --login-form-login-button-background-color: white;
+
+    --button-text-color: white;
+    --button-background-color: rgba(0,0,0,0.75);
+    --button-hover-background-color: rgba(0,0,0,0.9);
+    --button-active-background-color: rgba(0,0,0,1);
+
     
+
+    --footer-text-color: black;
+
+    transition: 1000ms;
 }
 
-/* Set a background color and font for the entire page */
-body {
-    background-color: #0d2033;
-    font-family: 'Montserrat', sans-serif;
-    padding: 20px;
+html.light-theme {
+    --login-welcome-color: black;
+    --login-form-text-color: black;
+    --login-form-background-color: white;
+    --login-form-border-color-active: black;
+    --login-form-register-color: rgba(0,0,0,.7);
+    --login-form-register-hover-color: rgba(0,0,0,1);
+    --login-form-login-button-color: black;
+    --login-form-login-button-background-color: black;
+
+    --button-text-color: white;
+    --button-background-color: rgba(0,0,0,0.5);
+    --button-hover-background-color: rgba(0,0,0,0.75);
+    --button-active-background-color: rgba(0,0,0,1);
+
 }
 
-.logo {
-    display: block;
-    margin: -75px auto;
-    width: 400px;
+.generate-warning {
+    color: var(--login-form-login-button-background-color);
+    margin: 0;
+    font-size: 1rem;
+    height: 30px;
+}
+
+.keys-container {
     height: auto;
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 100px;
+    justify-items: center;
+    align-content: center;
+    margin-top: 50px;
+}
+
+@media (width <= 1165px) {
+
+    .keys-container {
+        grid-template-columns: 10vw 1fr 10vw;
+        grid-template-rows: 1fr 1fr;
+    }
+
+
+    .add-broker-form-container {
+        margin-top: 10px;
+        position: static!important;
+        grid-row: 2 / 3;
+        grid-column: 2 / 3;
+    }
+}
+
+.simple-info-container {
+    grid-column: 2 / 3;
+}
+
+.tradehook-api-form-container {
+    /* background-color: var(--login-form-background-color); */
+    color: var(--login-form-login-button-background-color);
+    display: grid;
+    grid-template-columns: 550px;
+    grid-template-rows: 1fr 1fr 30px 1fr;
+    justify-items: center;
+    align-content: center;
+    gap: 0px;
+    /* border: solid 1px rgba(0,0,0,0.25); */
+    /* box-shadow: 1px 1px 1px gray; */
+    /* border-radius: 2%; */
+}
+
+#generate-delete-form {
+    display: flex;
+    gap: 10px
+}
+
+button {
+    padding: 12.5px 30px;
+    border: 0;
+    border-radius: 100px;
+    background-color: var(--button-background-color);
+    color: var(--button-text-color);
+    font-weight: Bold;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    cursor: pointer;
+    border: solid 1px rgba(0,0,0,0.25);
+    position: relative;
    
 }
-
-/* Style the "Home" button */
-.home-button {
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: #c5a43c;
-    text-decoration: none;
-    border: 2px solid #c5a43c;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    position: absolute;
-    top: 35px;
+  
+button:hover {
+    background-color: var(--button-hover-background-color);
+    transform: scale(1.1);
+}
+  
+button:active {
+    background-color: var(--button-active-background-color);
+    transition: all 0.25s;
+    -webkit-transition: all 0.25s;
+    box-shadow: none;
+    transform: scale(0.98);
 }
 
-.home-button:hover {
-    background-color: #c5a43c;
-    color: #0d2033;
-}
-
-.heading-container {
-    text-align: center;
-    margin:20px;
-    display: flex;
-    justify-content: space-evenly;
-    position: absolute;
-    right: 10px;
-    top: 150px;
-}
-
-.heading-container h1 {
-    margin: 20px 35px;
-    
-}
-
-.apilink {
-    width: 250px;
-}
-
-.eventloglink {
-    width: 250px;
-}
-
-
-.setuplink {
-    width: 200px;
-}
-
-.heading-container h1 a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    text-decoration: none;
-    display: inline-block;
-    margin: 0 20px;
-    color: #eadb80;
-    font-size: 30px;
-    transition: color 0.3s;
-}
-
-.heading-container h1 a:hover {
-    color: #c5a43c;
-}
-
-.whole {
-    /*display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;*/
-    position: absolute;
-    top: 250px;
-    left: 20px;
-    width: 250px;
-}
-
-/* Style the form buttons */
-form button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #0d2033;
-    color: #0d2033;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-form button:hover {
-    background-color: #0056b3;
-}
-
-.apikey {
-    width: 700px;
-}
-
-.delete {
-    position: absolute;
-    left: 220px;
-    width: 200px;
-
-}
-
-.generate {
-    width: 200px;
-}
-
-/* Style the headings */
-h2 {
-    font-size: 28px;
+.brokers-list {
     margin-top: 20px;
-    color: #c5a43c;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    width: 400px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 50px 1fr;
+    justify-items: center;
+    align-content: center;
+    gap: 0px;
+    color: var(--login-form-login-button-background-color);
 }
 
-/* Style the list of brokers */
-ul {
-    list-style-type: none;
-    margin: 20px 0;
-    padding: 0;
+h3 {
+    font-size: 1.5rem;
+    letter-spacing: 1.15px;
+    line-height: 1.5rem;
+    font-weight: 500;
 }
 
-li {
-    border: 1px solid #c5a43c;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #0d2033;
-    color: #eadb80;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    font-weight: 350;
-    width: 550px;
-}
-
-/* Style the API Key display */
 p {
-    font-size: 20px;
-    color: #eadb80;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    margin-top: 20px;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    font-weight: 400;
 }
 
-/* Style the forms */
-form {
-    margin-top: 20px;
+ul {
+    list-style: none;
 }
 
-/* Style form inputs and labels */
-form input[type="text"],
-form input[type="password"] {
+.broker-form {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-content: center;
+    gap: 0px;
+}
+
+.add-broker-form-container {
+    display: grid;
+    height: 450px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px 1fr;
+    justify-items: center;
+    background-color: var(--login-form-background-color);
+    border-radius: 5px;
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 2px gray;
+    color: black;
+    position: fixed;
+    left: 55vw;
+    top: 20%;
+}
+
+.add-broker-form {
     width: 500px;
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    justify-items: center;
+    align-content: center;
+    gap: 20px;
 }
 
-.broker {
-    margin-top: 20px;
+#broker-name-text {
+    font-size: 1.125rem;
 }
 
-/* Style form buttons within forms */
-form button[type="submit"] {
-    background-color: #0d2033;
-    color: #c5a43c;
-    border: 2px solid #c5a43c;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-form button[type="submit"]:hover {
-    background-color: #c5a43c;
-    color: #0d2033;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-/* Reset some default browser styles 
-body, h2, ul, li, p, button {
-    margin: 0;
-    padding: 0;
-}
-
-/* Set a background color and font for the entire page 
-body {
-    background-color: #0d2033;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    padding: 20px;
-}
-
-.logo {
-    margin: -40px auto;
-    position: relative;
-    right: 0;
-    display: block;
-    width: 400px;
-    height: auto;
-    bottom: 12%;
-
-}
-
-/* Style the "Home" button 
-.home-button {
-    display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    padding: 10px 20px;
-    font-size: 18px;
-    color: #c5a43c;
-    text-decoration: none;
-    border: 2px solid #c5a43c;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.home-button:hover {
-    background-color: #c5a43c;
-    color: #0d2033;
-}
-
-
-.heading-container {
-    border: none;
-    text-align: center;
-    margin: 20px 20px;
-    position: absolute;
-    bottom: 295px;
-    left: -85px;
-    display: flex;
-    justify-content: space-evenly; /* Adjust this property to control the spacing 
-    text-align: center;
-}
-
-.heading-container h1 {
-     /* Display headers horizontally 
-    margin: 10px 0px; /* Optional: Add spacing between headers 
-}
-
-.heading-container h1 a {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    text-decoration: none;
-    display: inline-block;
-    margin: 0 20px;
-    padding-left: 100px;
-    position: relative;
-    top: -150px;
-    color: #eadb80;
-    font-size: 30px;
-    transition: color 0.3s;
-    
-}
-
-.heading-container h1 a:hover {
-    color: #c5a43c
-}
-
-
-.whole{
-    position: absolute;
-    top: 320px;
-}
-
-.generate {
-    position: absolute;
-    top: 0px;
-}
-
-.delete {
-    position: absolute;
-    top: 0px;
-    left: 220px;
-}
-
-.apikey{
-    position: absolute;
-    top: -55px;
-
-}
-
-/* Style the form buttons 
-form button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color:#0d2033;
-    color:#0d2033;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    /*margin: 10px;
-    transition: background-color 0.3s ease;
-}
-
-form button:hover {
-    background-color: #0056b3;
-}
-
-/* Style the headings 
-h2 {
-    font-size: 28px;
-    margin-top: 90px;
-    color:#c5a43c;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-}
-
-/* Style the list of brokers 
-ul {
-    list-style-type: none;
-    margin: 20px 0;
-    padding: 0;
-    
-}
-
-li {
-    border: 1px solid #c5a43c;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color:#0d2033;
-    color: #eadb80;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    font-weight: 350;
-    width: 45%;
-}
-
-/* Style the API Key display 
-p {
-    font-size: 20px;
-    color: #eadb80;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    margin-top: 20px;
-}
-
-/* Style the forms 
-form {
-    margin-top: 20px;
-    
-}
-
-/* Style form inputs and labels 
-form input[type="text"],
-form input[type="password"] {
+select {
     width: 40%;
-    padding: 10px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
+    height: 30px;
+    background-color: black;
     border-radius: 5px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    
-    
+    border: solid 1px rgba(0,0,0,0.25);
+    box-shadow: 1px 1px 2px gray;
 }
 
-.broker {
+.form-group input {
+    width: 90%;
+    background-color: var(--login-form-background-color);
+    color: var(--login-form-text-color);
+    height: 50px;
+    border-radius: 5px;
+}
+
+.form-group {
+    width: 90%;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 1em 0 1em 0;
     position: relative;
-    bottom: 50px;
 }
+  
+  .form-group input {
+    font-size: 100%;
+    padding: 0.8em;
+    outline: none;
+    border: 2px solid rgb(200, 200, 200);
+    background-color: transparent;
+    border-radius: 10px;
+    width: 100%;
+  }
+  
+  .form-group label {
+    font-size: 100%;
+    position: absolute;
+    left: 0;
+    padding: 0.8em;
+    margin-left: 0.5em;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    color: rgb(100, 100, 100);
+  }
+  
+  .form-group :is(input:focus, input:valid)~label {
+    transform: translateY(-50%) scale(.8);
+    margin: 0em;
+    margin-left: 1.3em;
+    padding: 0.4em;
+    background-color: white;
+  }
+  
+  .form-group :is(input:focus, input:valid) {
+    border-color: var(--login-form-border-color-active)
+  }
 
-/* Style form buttons within forms
-form button[type="submit"] {
-    background-color:#0d2033;
-    color:#c5a43c;
-    border: 2px solid #c5a43c;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 18px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 350;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-form button[type="submit"]:hover {
-    background-color:#c5a43c;
-    color:#0d2033;
-}
-
-.apilink {
-    width: 250px;
-}
-
-.eventloglink {
-    width: 250px;
+.brokers-list-entry {
+    transform: unset;
 }

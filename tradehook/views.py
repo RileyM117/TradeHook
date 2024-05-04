@@ -183,6 +183,10 @@ class EventLogView(View):
 # Custom View to render all API keys on one page. (Broker API Keys and TradeHook API key)
 class APIKeyView(View):
 
+        #
+        # INSTEAD OF ERROR JSON RESPONSES, IMPLEMENT IN FRONTEND, JUST HIDE BUTTONS 
+        #
+
     def get(self, request, *args, **kwargs):
         user = request.user
 
@@ -209,21 +213,34 @@ class APIKeyView(View):
 
         # differentiate between generating and deleting for TradeHook API Key
         if request.POST.get('action') == 'generate':
+            form = APIKeyForm(request.POST)
+
+
+            # violates rule
             api_key, created = APIKeys.objects.get_or_create(user=user)
-            if not created:
-                return JsonResponse({'error': 'API key already exists.'}, status=400)
+
+            # JUST HIDE THE GENERATE BUTTON INSTEAD OF STATUS ERROR AND JSONRESPONSE
+            #if not created:
+            #    return JsonResponse({'error': 'API key already exists.'}, status=400)
             
             # reload the page. 
-            return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
 
+            #return render(request, "api_keys.html", {'api_key': api_key})
+
+
+            return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/api-keys/')
+        
+            
         elif request.POST.get('action') == 'delete':
             try:
                 api_key = APIKeys.objects.get(user=user)
                 api_key.delete()
                 
-                return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
+                return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/api-keys/')
+            # JUST HIDE THE DELETE BUTTON INSTEAD OF STATUS ERROR AND JSONRESPONSE
             except APIKeys.DoesNotExist:
-                return JsonResponse({'error': 'API key not found.'}, status=404)
+                return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/api-keys/')
+                #return JsonResponse({'error': 'API key not found.'}, status=404)
             
         # Handle the form submission to add a new broker
         elif request.POST.get('action') == 'add_broker':
@@ -235,10 +252,11 @@ class APIKeyView(View):
                     broker.user = user
                     broker.save()
                     
-                    return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
+                    return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/api-keys/')
+                # JUST HIDE THE GENERATE BUTTON INSTEAD OF REDIRECT
             except:
                 
-                return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
+                return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/api-keys/')
           
             
         elif request.POST.get('action') == 'delete_broker':
@@ -247,7 +265,8 @@ class APIKeyView(View):
                 broker = CustomerBrokers.objects.get(id=broker_id, user=user)
                 broker.delete()
                 
-                return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/manage/my_api_keys/')
+                return redirect('https://tradehook-prod-fbb7997de66a.herokuapp.com/tradehook/api-keys/')
+            # JUST HIDE THE DELETE BUTTON INSTEAD OF STATUS ERROR AND JSONRESPONSE
             except CustomerBrokers.DoesNotExist:
                 return JsonResponse({'error': 'Broker not found.'}, status=404)
 
@@ -318,7 +337,5 @@ def webhook_receiver(request):
         return JsonResponse({'message': 'Webhook data processed and saved successfully'}, status=status.HTTP_201_CREATED)
     # if non post request is made to this endpoint, throw error.
     return HttpResponseBadRequest('Only POST requests are supported for this endpoint')
-
-
 
 
